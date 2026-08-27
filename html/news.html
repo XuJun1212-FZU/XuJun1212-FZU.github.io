@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学术动态归档 | 徐浚</title>
+    <meta name="description" content="徐浚个人学术主页动态归档。">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <style>
+        :root {
+            --bg: #f3f5f7;
+            --surface: #ffffff;
+            --line: #d6dde5;
+            --ink: #1f2937;
+            --muted: #5f6b7a;
+            --accent: #2f5e89;
+            --accent-soft: #e8f0f7;
+            --shadow: 0 18px 40px rgba(21, 37, 53, 0.08);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+            line-height: 1.75;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            border-bottom: 1px solid var(--line);
+            background: rgba(243, 245, 247, 0.94);
+            backdrop-filter: blur(12px);
+        }
+
+        .topbar-inner,
+        .container,
+        .footer {
+            width: min(980px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .topbar-inner {
+            min-height: 62px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            font-size: 14px;
+        }
+
+        .topbar-link {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .page {
+            padding: 34px 0 48px;
+        }
+
+        .page-head {
+            margin-bottom: 22px;
+        }
+
+        .page-title {
+            margin: 0 0 8px;
+            font-size: clamp(28px, 4vw, 40px);
+            line-height: 1.2;
+        }
+
+        .page-desc {
+            margin: 0;
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 16px;
+        }
+
+        .entry {
+            padding: 20px 22px;
+            border-radius: 18px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            box-shadow: var(--shadow);
+        }
+
+        .entry-date {
+            margin-bottom: 8px;
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .entry-title {
+            margin: 0 0 6px;
+            font-size: 18px;
+            line-height: 1.45;
+        }
+
+        .entry-text {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .entry-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .entry-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .entry-link-primary {
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        .footer {
+            margin-top: 28px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        @media (max-width: 640px) {
+            .topbar-inner,
+            .container,
+            .footer {
+                width: calc(100% - 28px);
+            }
+
+            .topbar-inner {
+                min-height: 56px;
+                flex-wrap: wrap;
+                padding: 10px 0;
+            }
+
+            .entry {
+                padding: 18px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <a class="topbar-link" href="../index.html">返回主页</a>
+            <div>学术动态时间线</div>
+        </div>
+    </header>
+
+    <main class="page">
+        <div class="container">
+            <div class="page-head">
+                <h1 class="page-title">学术动态归档</h1>
+                <p class="page-desc">
+                    这里按照时间梳理个人荣誉、创新竞赛与科研动态，内容依据已提供的个人资料整理。
+                </p>
+            </div>
+
+            <div class="timeline">
+                <article class="entry">
+                    <div class="entry-date">2026年</div>
+                    <h2 class="entry-title">获评福州大学十佳大学生</h2>
+                    <p class="entry-text">获评福州大学十佳大学生。</p>
+                    <div class="entry-actions"><a class="entry-link" href="news_sub/top_student_2026.html">查看详情</a></div>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-date">2025年</div>
+                    <h2 class="entry-title">中国国际大学生创新大赛全国金奖</h2>
+                    <p class="entry-text">作为负责人（排1），项目“超重载可拓展智能轴模块协同行驶技术”获全国金奖，国赛小组第1。</p>
+                    <div class="entry-actions"><a class="entry-link" href="news_sub/innovation_gold_2025.html">查看详情</a></div>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-date">2025年</div>
+                    <h2 class="entry-title">第十九届“挑战杯”一等奖</h2>
+                    <p class="entry-text">项目“重载运输的多轴车全轮转向智能协同系统”获一等奖，为福建省理工类参赛项目（主赛道）最高奖。</p>
+                    <div class="entry-actions"><a class="entry-link" href="news_sub/challenge_cup_2025.html">查看详情</a></div>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-date">2025年</div>
+                    <h2 class="entry-title">入选中国科协青年科技人才培育工程博士生专项计划</h2>
+                    <p class="entry-text">由中国工程机械学会托举，主持博士生专项计划。</p>
+                    <div class="entry-actions"><a class="entry-link" href="news_sub/young_talent_2025.html">查看详情</a></div>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-date">2025年</div>
+                    <h2 class="entry-title">获评福州大学大学生年度人物</h2>
+                    <p class="entry-text">获评福州大学大学生年度人物。</p>
+                    <div class="entry-actions"><a class="entry-link" href="news_sub/annual_student_2025.html">查看详情</a></div>
+                </article>
+
+                <article class="entry">
+                    <div class="entry-date">2024年</div>
+                    <h2 class="entry-title">获评福州大学十佳研究生党员</h2>
+                    <p class="entry-text">获评福州大学十佳研究生党员。</p>
+                    <div class="entry-actions"><a class="entry-link" href="news_sub/graduate_party_member_2024.html">查看详情</a></div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <div class="footer">© 2026 徐浚。动态归档页已适配手机端与桌面端浏览。</div>
+    <script src="../js/visit-tracker.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+name = "xujun-homepage-analytics"
+main = "analytics-worker.js"
+compatibility_date = "2026-04-24"
+workers_dev = true
+
+[build]
+command = ""
+
+# TODO: Configure personal Cloudflare analytics before deployment.
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "homepage_analytics"
+# database_id = "TODO_PERSONAL_D1_DATABASE_ID"

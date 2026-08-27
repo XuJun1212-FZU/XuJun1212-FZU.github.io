@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" role="img" aria-labelledby="title desc">
+  <title id="title">研究配图待补充</title>
+  <desc id="desc">用于保持研究卡片布局的中性占位图</desc>
+  <rect width="900" height="500" fill="#eef4f8"/>
+  <path d="M120 330 L280 230 L420 285 L585 165 L780 245" fill="none" stroke="#416f97" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="120" cy="330" r="18" fill="#274d70"/>
+  <circle cx="280" cy="230" r="18" fill="#274d70"/>
+  <circle cx="420" cy="285" r="18" fill="#274d70"/>
+  <circle cx="585" cy="165" r="18" fill="#274d70"/>
+  <circle cx="780" cy="245" r="18" fill="#274d70"/>
+  <text x="450" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" fill="#274d70">Research image - TODO</text>
+</svg>

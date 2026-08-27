@@ -1,0 +1,1241 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>徐浚 | 个人学术主页</title>
+    <meta name="description" content="徐浚，福州大学机械学院机械电子工程专业2024级博士研究生，主要研究重型多轴运载装备电液智能控制技术。">
+    <meta name="author" content="徐浚">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preload" as="image" href="personal_data/portrait.png" type="image/png">
+    <style>
+        :root {
+            --bg: #f4f6f8;
+            --surface: #ffffff;
+            --surface-soft: #f8fafc;
+            --ink: #1f2937;
+            --muted: #5f6b7a;
+            --line: #d8dee6;
+            --accent: #2f5a82;
+            --accent-soft: #e8eff6;
+            --shadow: 0 14px 32px rgba(23, 38, 54, 0.07);
+            --radius: 16px;
+            --container: 1120px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--ink);
+            font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+            line-height: 1.75;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .container {
+            width: min(var(--container), calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(244, 246, 248, 0.94);
+            border-bottom: 1px solid rgba(216, 222, 230, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .site-header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            min-height: 64px;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .brand-title {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .brand-subtitle {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .nav a {
+            position: relative;
+            padding: 6px 0;
+        }
+
+        .nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 2px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 0.2s ease;
+        }
+
+        .nav a:hover,
+        .nav a:focus-visible {
+            color: var(--ink);
+        }
+
+        .nav a:hover::after,
+        .nav a:focus-visible::after {
+            transform: scaleX(1);
+        }
+
+        .nav-toggle {
+            display: none;
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: var(--surface);
+            cursor: pointer;
+        }
+
+        .nav-toggle span,
+        .nav-toggle span::before,
+        .nav-toggle span::after {
+            display: block;
+            width: 18px;
+            height: 2px;
+            margin: 0 auto;
+            background: var(--accent);
+            border-radius: 999px;
+            content: "";
+        }
+
+        .nav-toggle span::before {
+            transform: translateY(-6px);
+        }
+
+        .nav-toggle span::after {
+            transform: translateY(4px);
+        }
+
+        .hero {
+            padding: 44px 0 24px;
+        }
+
+        .hero-panel {
+            display: grid;
+            grid-template-columns: minmax(0, 1.55fr) 220px;
+            gap: 20px;
+            padding: 24px;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            box-shadow: var(--shadow);
+            align-items: start;
+        }
+
+        .hero-copy {
+            min-width: 0;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 12px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .hero h1 {
+            margin: 0 0 10px;
+            font-size: clamp(30px, 4.4vw, 46px);
+            line-height: 1.18;
+        }
+
+        .hero-role {
+            margin: 0 0 14px;
+            color: var(--accent);
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .hero-summary {
+            margin: 0 0 18px;
+            max-width: 720px;
+            color: var(--muted);
+            font-size: 15px;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: var(--surface-soft);
+            border: 1px solid var(--line);
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .hero-facts {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .hero-fact {
+            padding: 12px 14px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: linear-gradient(180deg, #ffffff, #f7fbff);
+        }
+
+        .hero-fact-label {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.35;
+        }
+
+        .hero-fact-value {
+            margin-top: 4px;
+            color: var(--ink);
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 40px;
+            padding: 9px 15px;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            background: var(--surface);
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.2s ease;
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            transform: translateY(-1px);
+            border-color: #b9c8d6;
+        }
+
+        .button-primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #ffffff;
+        }
+
+        .button-primary:hover,
+        .button-primary:focus-visible {
+            background: #274d70;
+            border-color: #274d70;
+        }
+
+        .hero-side {
+            display: grid;
+            gap: 12px;
+            align-content: start;
+            justify-items: stretch;
+            max-width: 240px;
+        }
+
+        .portrait-card,
+        .fact-card,
+        .section-card,
+        .pub-item,
+        .news-item,
+        .split-card,
+        .contact-card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .portrait-card {
+            width: 100%;
+            padding: 12px;
+            justify-self: stretch;
+        }
+
+        .portrait-frame {
+            overflow: hidden;
+            border-radius: 12px;
+            aspect-ratio: 1 / 1.22;
+            background: #dee5ec;
+        }
+
+        .portrait-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .portrait-note {
+            padding-top: 10px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        section {
+            padding: 22px 0;
+        }
+
+        main > section:not(.hero) {
+            content-visibility: auto;
+            contain-intrinsic-size: 1px 960px;
+        }
+
+        .section-head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            margin: 0;
+            font-size: 26px;
+            line-height: 1.2;
+        }
+
+        .section-desc {
+            margin: 0;
+            max-width: 760px;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .section-card {
+            display: grid;
+            gap: 12px;
+            padding: 16px;
+        }
+
+        .section-index {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            margin-bottom: 0;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .section-visual {
+            overflow: hidden;
+            aspect-ratio: 16 / 10;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: #dde8f1;
+        }
+
+        .section-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .section-card h3 {
+            margin: 0 0 8px;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+
+        .section-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .pub-list,
+        .news-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .pub-item {
+            display: grid;
+            grid-template-columns: 72px 140px minmax(0, 1fr) auto;
+            gap: 16px;
+            padding: 18px 20px;
+            align-items: start;
+        }
+
+        .pub-year {
+            color: var(--accent);
+            font-size: 18px;
+            font-weight: 700;
+            padding-top: 2px;
+        }
+
+        .pub-cover {
+            position: relative;
+            overflow: hidden;
+            min-height: 176px;
+            aspect-ratio: 560 / 760;
+            border-radius: 10px;
+            border: 1px solid rgba(40, 70, 102, 0.22);
+            background: #0f2a40;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 6px 18px rgba(13, 31, 47, 0.12);
+        }
+
+        .pub-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .pub-cover-a {
+            background: #183a59;
+        }
+
+        .pub-cover-b {
+            background: #214468;
+        }
+
+        .pub-cover-c {
+            background: #274d73;
+        }
+
+        .pub-cover-d {
+            background: #2d567d;
+        }
+
+        .pub-main {
+            min-width: 0;
+        }
+
+        .pub-cta {
+            align-self: center;
+            justify-self: end;
+        }
+
+        .pub-title {
+            margin: 0 0 6px;
+            font-size: 17px;
+            line-height: 1.45;
+        }
+
+        .pub-text,
+        .news-text {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .pub-meta {
+            margin-top: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .meta-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 9px;
+            border-radius: 999px;
+            background: var(--surface-soft);
+            border: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .news-item {
+            display: grid;
+            grid-template-columns: 96px minmax(0, 1fr) auto;
+            gap: 16px;
+            padding: 17px 20px;
+            align-items: start;
+        }
+
+        .news-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-self: end;
+            align-self: center;
+        }
+
+        .news-date {
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 700;
+            padding-top: 2px;
+        }
+
+        .news-title {
+            margin: 0 0 4px;
+            font-size: 16px;
+            line-height: 1.45;
+        }
+
+        .button-compact {
+            min-height: 36px;
+            padding: 7px 12px;
+            font-size: 13px;
+        }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .split-card {
+            padding: 20px;
+        }
+
+        .split-card h3 {
+            margin: 0 0 12px;
+            font-size: 18px;
+        }
+
+        .item-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .item {
+            padding-top: 12px;
+            border-top: 1px solid var(--line);
+        }
+
+        .item:first-child {
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .item-title {
+            margin-bottom: 4px;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .item-text {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .project-more {
+            margin-top: 6px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--line);
+        }
+
+        .project-more summary {
+            cursor: pointer;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 14px;
+            list-style: none;
+        }
+
+        .project-more summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .project-more summary::before {
+            content: "▸ ";
+        }
+
+        .project-more[open] summary::before {
+            content: "▾ ";
+        }
+
+        .project-more .item-list {
+            margin-top: 8px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 320px;
+            gap: 16px;
+        }
+
+        .contact-card {
+            padding: 20px;
+        }
+
+        .contact-card h3 {
+            margin: 0 0 12px;
+            font-size: 18px;
+        }
+
+        .contact-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .contact-item {
+            padding-top: 12px;
+            border-top: 1px solid var(--line);
+        }
+
+        .contact-item:first-child {
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .contact-label {
+            margin-bottom: 4px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .contact-value {
+            font-size: 15px;
+            font-weight: 700;
+            word-break: break-word;
+        }
+
+        .link-list {
+            display: grid;
+            gap: 10px;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 12px 14px;
+            border-radius: 12px;
+            background: var(--surface-soft);
+            border: 1px solid var(--line);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .link-item span {
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .site-footer {
+            padding: 26px 0 36px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-panel,
+            .contact-grid,
+            .split-grid,
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: min(var(--container), calc(100% - 28px));
+            }
+
+            .site-header-inner {
+                min-height: 58px;
+            }
+
+            .nav-toggle {
+                display: inline-grid;
+                place-items: center;
+            }
+
+            .nav {
+                position: absolute;
+                top: calc(100% + 1px);
+                left: 0;
+                right: 0;
+                display: grid;
+                gap: 0;
+                padding: 8px 14px 14px;
+                background: rgba(244, 246, 248, 0.98);
+                border-bottom: 1px solid var(--line);
+                transform: translateY(-10px);
+                opacity: 0;
+                pointer-events: none;
+                transition: 0.2s ease;
+            }
+
+            .nav.open {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .nav a {
+                padding: 12px 4px;
+                border-bottom: 1px solid rgba(216, 222, 230, 0.9);
+            }
+
+            .nav a:last-child {
+                border-bottom: none;
+            }
+
+            .hero {
+                padding-top: 32px;
+            }
+
+            .hero-panel {
+                padding: 18px;
+            }
+
+            .hero-facts {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-side {
+                max-width: none;
+            }
+
+            .portrait-card {
+                width: min(100%, 150px);
+                justify-self: start;
+            }
+
+            .fact-card {
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 23px;
+            }
+
+            .pub-item,
+            .news-item {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .pub-cover {
+                min-height: 150px;
+                max-width: 220px;
+            }
+
+            .pub-cta {
+                justify-self: start;
+            }
+
+            .news-actions {
+                justify-self: start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container site-header-inner">
+            <div class="brand">
+                <div class="brand-title">徐浚</div>
+                <div class="brand-subtitle">个人学术主页</div>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="打开导航">
+                <span></span>
+            </button>
+            <nav class="nav" id="siteNav">
+                <a href="#overview">简介</a>
+                <a href="#research">研究</a>
+                <a href="#publications">论文</a>
+                <a href="#news">动态</a>
+                <a href="#profile">经历</a>
+                <a href="#contact">联系</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="overview">
+            <div class="container">
+                <div class="hero-panel">
+                    <div class="hero-copy">
+                        <div class="eyebrow">机械电子工程博士研究生</div>
+                        <h1>徐浚</h1>
+                        <!-- TODO: English name -->
+                        <p class="hero-role">福州大学机械学院 · 导师杜恒教授</p>
+                        <p class="hero-summary">
+                            徐浚，福州大学机械学院机械电子工程专业2024级博士研究生（硕博连读），师从杜恒教授，依托流体动力与电液智能控制福建省高校重点实验室开展科研工作。主要研究方向为重型多轴运载装备电液智能控制技术，重点围绕重型多轴车辆电液转向系统、分布式重载电液转向轴模块、同源多驱电液系统能效机理与控制等开展研究。已发表SCI论文2篇，参编学术专著1部，并参与多项发明专利及国家、省部级科研项目。
+                        </p>
+                        <div class="hero-tags">
+                            <span class="tag">重型多轴车辆</span>
+                            <span class="tag">电液智能控制</span>
+                            <span class="tag">流体传动与控制</span>
+                            <span class="tag">电液转向</span>
+                            <span class="tag">能效控制</span>
+                            <span class="tag">多轴协同控制</span>
+                        </div>
+                        <div class="hero-actions">
+                            <a class="button button-primary" href="#publications">代表性论文</a>
+                            <a class="button" href="#news">近期动态</a>
+                            <a class="button" href="html/news.html">动态归档</a>
+                        </div>
+                        <div class="hero-facts">
+                            <div class="hero-fact">
+                                <div class="hero-fact-label">代表性论文</div>
+                                <div class="hero-fact-value">SCI 论文 2 篇</div>
+                            </div>
+                            <div class="hero-fact">
+                                <div class="hero-fact-label">科研项目</div>
+                                <div class="hero-fact-value">主持/参与纵向项目 5 项</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <aside class="hero-side">
+                        <div class="portrait-card">
+                            <div class="portrait-frame">
+                                <img src="personal_data/portrait.png" alt="徐浚个人照片" width="1696" height="2390" decoding="async" fetchpriority="high">
+                            </div>
+                            <div class="portrait-note">研究方向：重型多轴运载装备电液智能控制技术（流体传动与控制）</div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <section id="research">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <h2 class="section-title">主要研究内容</h2>
+                    </div>
+                </div>
+
+                <div class="research-grid">
+                    <article class="section-card">
+                        <div class="section-index">01</div>
+                        <div class="section-visual">
+                            <img src="personal_data/research-placeholder.svg" alt="重型多轴车辆电液转向研究配图待补充" width="900" height="500" loading="lazy" decoding="async" fetchpriority="low">
+                        </div>
+                        <h3>重型多轴车辆电液转向</h3>
+                        <p>面向重型多轴运载装备高精度、高能效转向需求，研究多轴车辆电液转向系统构型设计、运动关系、精准控制及能效优化方法。</p>
+                    </article>
+
+                    <article class="section-card">
+                        <div class="section-index">02</div>
+                        <div class="section-visual">
+                            <img src="personal_data/research-placeholder.svg" alt="同源双驱电液转向轴模块研究配图待补充" width="900" height="500" loading="lazy" decoding="async" fetchpriority="low">
+                        </div>
+                        <h3>同源双驱电液转向轴模块</h3>
+                        <p>研究分布式重载同源双驱电液转向轴模块的构型设计、机电液耦合建模、能效机理分析及非线性节能控制，实现高精度转向与综合低能耗。</p>
+                    </article>
+
+                    <article class="section-card">
+                        <div class="section-index">03</div>
+                        <div class="section-visual">
+                            <img src="personal_data/research-placeholder.svg" alt="多自由度电液角单元与协同控制研究配图待补充" width="900" height="500" loading="lazy" decoding="async" fetchpriority="low">
+                        </div>
+                        <h3>多自由度电液角单元与协同控制</h3>
+                        <p>面向下一代重型多轴车辆分布式驱控需求，研究转向/悬架同源异驱新型电液角单元以及多轴协同控制，为重型多轴车辆多模式、高精度和高能效运行提供技术基础。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="publications">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <h2 class="section-title">代表性论文</h2>
+                    </div>
+                </div>
+
+                <div class="pub-list">
+                    <article class="pub-item">
+                        <div class="pub-year">2025</div>
+                        <div class="pub-cover pub-cover-a">
+                            <img src="personal_data/publication-placeholder.svg" alt="Energy论文配图待补充" width="760" height="950" loading="lazy" decoding="async" fetchpriority="low">
+                        </div>
+                        <div class="pub-main">
+                            <h3 class="pub-title">Energy-Efficient Design and Power Flow Analysis of Electro-Hydraulic Steering Systems for Heavy-Duty Wheeled Vehicles Via Parameter Identification</h3>
+                            <p class="pub-text">重型轮式车辆电液转向系统节能设计与功率流分析研究。</p>
+                            <div class="pub-meta">
+                                <span class="meta-tag">Energy, 2025</span>
+                                <span class="meta-tag">CAS Q1 TOP</span>
+                                <span class="meta-tag">First Author</span>
+                            </div>
+                        </div>
+                        <!-- TODO: Publication 1 DOI and online URL -->
+                        <span class="button pub-cta">链接待补充</span>
+                    </article>
+
+                    <article class="pub-item">
+                        <div class="pub-year">2024</div>
+                        <div class="pub-cover pub-cover-b">
+                            <img src="personal_data/publication-placeholder.svg" alt="PartD论文配图待补充" width="760" height="950" loading="lazy" decoding="async" fetchpriority="low">
+                        </div>
+                        <div class="pub-main">
+                            <h3 class="pub-title">High-performance steering tracking control of open circuit variable-speed pump-controlled steering system for heavy-duty vehicles based on flow nonlinearity compensation</h3>
+                            <p class="pub-text">面向重型车辆开式变转速泵控转向系统的流量非线性补偿与高性能跟踪控制研究。</p>
+                            <div class="pub-meta">
+                                <span class="meta-tag">PartD, 2024</span>
+                                <span class="meta-tag">中科协 T2</span>
+                                <span class="meta-tag">Second Author</span>
+                            </div>
+                        </div>
+                        <!-- TODO: Publication 2 full journal name, DOI and online URL -->
+                        <span class="button pub-cta">链接待补充</span>
+                    </article>
+
+                    <article class="pub-item">
+                        <div class="pub-year">专著</div>
+                        <div class="pub-cover pub-cover-c">
+                            <img src="personal_data/publication-placeholder.svg" alt="重型多轴转向车辆运动控制专著封面待补充" width="760" height="950" loading="lazy" decoding="async" fetchpriority="low">
+                        </div>
+                        <div class="pub-main">
+                            <h3 class="pub-title">《重型多轴转向车辆运动控制》</h3>
+                            <p class="pub-text">科学出版社，参编。</p>
+                            <div class="pub-meta">
+                                <span class="meta-tag">学术专著</span>
+                                <span class="meta-tag">科学出版社</span>
+                                <span class="meta-tag">参编</span>
+                            </div>
+                        </div>
+                        <!-- TODO: Book publication year and ISBN -->
+                        <span class="button pub-cta">信息待补充</span>
+                    </article>
+
+                    <article class="pub-item">
+                        <div class="pub-year">TODO</div>
+                        <div class="pub-cover pub-cover-d">
+                            <img src="personal_data/publication-placeholder.svg" alt="后续代表性成果配图待补充" width="760" height="950" loading="lazy" decoding="async" fetchpriority="low">
+                        </div>
+                        <div class="pub-main">
+                            <h3 class="pub-title">后续代表性成果待补充</h3>
+                            <p class="pub-text">保留原有 Publications 卡片结构，等待补充可公开展示的论文或其他学术成果。</p>
+                            <div class="pub-meta">
+                                <span class="meta-tag">TODO</span>
+                            </div>
+                        </div>
+                        <span class="button pub-cta">信息待补充</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="news">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <h2 class="section-title">近期动态</h2>
+                    </div>
+                    <a class="button" href="html/news.html">查看全部</a>
+                </div>
+
+                <div class="news-list">
+                    <article class="news-item">
+                        <div class="news-date">2026</div>
+                        <div>
+                            <h3 class="news-title">获评福州大学十佳大学生</h3>
+                            <p class="news-text">获评福州大学十佳大学生。</p>
+                        </div>
+                        <div class="news-actions"><a class="button button-compact" href="html/news_sub/top_student_2026.html">详情</a></div>
+                    </article>
+
+                    <article class="news-item">
+                        <div class="news-date">2025</div>
+                        <div>
+                            <h3 class="news-title">中国国际大学生创新大赛全国金奖</h3>
+                            <p class="news-text">作为负责人（排1），项目“超重载可拓展智能轴模块协同行驶技术”获全国金奖，国赛小组第1。</p>
+                        </div>
+                        <div class="news-actions"><a class="button button-compact" href="html/news_sub/innovation_gold_2025.html">详情</a></div>
+                    </article>
+
+                    <article class="news-item">
+                        <div class="news-date">2025</div>
+                        <div>
+                            <h3 class="news-title">第十九届“挑战杯”一等奖</h3>
+                            <p class="news-text">项目“重载运输的多轴车全轮转向智能协同系统”获一等奖，为福建省理工类参赛项目（主赛道）最高奖。</p>
+                        </div>
+                        <div class="news-actions"><a class="button button-compact" href="html/news_sub/challenge_cup_2025.html">详情</a></div>
+                    </article>
+
+                    <article class="news-item">
+                        <div class="news-date">2025</div>
+                        <div>
+                            <h3 class="news-title">入选中国科协青年科技人才培育工程博士生专项计划</h3>
+                            <p class="news-text">由中国工程机械学会托举，主持博士生专项计划。</p>
+                        </div>
+                        <div class="news-actions"><a class="button button-compact" href="html/news_sub/young_talent_2025.html">详情</a></div>
+                    </article>
+
+                    <article class="news-item">
+                        <div class="news-date">2025</div>
+                        <div>
+                            <h3 class="news-title">获评福州大学大学生年度人物</h3>
+                            <p class="news-text">获评福州大学大学生年度人物。</p>
+                        </div>
+                        <div class="news-actions"><a class="button button-compact" href="html/news_sub/annual_student_2025.html">详情</a></div>
+                    </article>
+
+                    <article class="news-item">
+                        <div class="news-date">2024</div>
+                        <div>
+                            <h3 class="news-title">获评福州大学十佳研究生党员</h3>
+                            <p class="news-text">获评福州大学十佳研究生党员。</p>
+                        </div>
+                        <div class="news-actions"><a class="button button-compact" href="html/news_sub/graduate_party_member_2024.html">详情</a></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="profile">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <h2 class="section-title">经历与荣誉</h2>
+                    </div>
+                </div>
+
+                <div class="split-grid">
+                    <article class="split-card">
+                        <h3>教育经历</h3>
+                        <div class="item-list">
+                            <div class="item">
+                                <div class="item-title">福州大学 · 机械电子工程博士研究生</div>
+                                <div class="item-text">2024级（硕博连读），导师：杜恒教授</div>
+                            </div>
+                            <!-- TODO: 本科、硕士教育经历及准确起止时间 -->
+                        </div>
+                    </article>
+
+                    <article class="split-card">
+                        <h3>科研项目</h3>
+                        <div class="item-list">
+                            <div class="item">
+                                <div class="item-title">2025 · 中国科协青年科技人才培育工程博士生专项计划（主持）</div>
+                                <div class="item-text">托举单位：中国工程机械学会</div>
+                            </div>
+                            <div class="item">
+                                <div class="item-title">国家自然科学基金面上项目（参研）</div>
+                                <div class="item-text">多轴车辆转向/悬架同源异驱新型电液角单元设计与泛化建模控制</div>
+                            </div>
+                            <div class="item">
+                                <div class="item-title">国家自然科学基金面上项目（参研）</div>
+                                <div class="item-text">新泵控主驱/横拉杆辅控式多轴电液转向的精准轨迹跟踪机理与分层控制</div>
+                            </div>
+                            <div class="item">
+                                <div class="item-title">国家自然科学基金面上项目（参研）</div>
+                                <div class="item-text">融合液压软开关的新一源多驱型多轴转向系统节能机理与控制（全国十佳优秀结题）</div>
+                            </div>
+                        </div>
+                        <details class="project-more">
+                            <summary>更多项目（参与 1 项）</summary>
+                            <div class="item-list">
+                                <div class="item">
+                                    <div class="item-title">福建省杰青项目（参研，结题）</div>
+                                    <div class="item-text">实现多轴转向一源多驱系统优良能效与动态特性的新原理和新方法</div>
+                                </div>
+                            </div>
+                        </details>
+                    </article>
+
+                    <article class="split-card">
+                        <h3>荣誉奖励</h3>
+                        <div class="item-list">
+                            <div class="item">
+                                <div class="item-title">2026 · 福州大学十佳大学生</div>
+                                <div class="item-text">校级荣誉</div>
+                            </div>
+                            <div class="item">
+                                <div class="item-title">2025 · 中国国际大学生创新大赛全国金奖</div>
+                                <div class="item-text">负责人（排1），国赛小组第1</div>
+                            </div>
+                            <div class="item">
+                                <div class="item-title">2025 · 第十九届“挑战杯”一等奖</div>
+                                <div class="item-text">福建省理工类参赛项目（主赛道）最高奖</div>
+                            </div>
+                            <div class="item">
+                                <div class="item-title">2025 · 福州大学大学生年度人物</div>
+                                <div class="item-text">校级荣誉</div>
+                            </div>
+                            <div class="item">
+                                <div class="item-title">2024 · 福州大学十佳研究生党员</div>
+                                <div class="item-text">校级荣誉</div>
+                            </div>
+                            <div class="item">
+                                <div class="item-title">学术会议与论坛荣誉</div>
+                                <div class="item-text">全国流体传动与控制年会优秀海报奖；全国机械工程学科博士生论坛优秀论文奖</div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="split-card">
+                        <h3>学术服务</h3>
+                        <div class="item-list">
+                            <div class="item">
+                                <div class="item-title">流体动力与智能控制省重点实验室支部副书记</div>
+                                <div class="item-text">组织及学生工作经历</div>
+                            </div>
+                            <div class="item">
+                                <div class="item-title">福州大学机械学院学生团委原副书记</div>
+                                <div class="item-text">组织及学生工作经历</div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <h2 class="section-title">联系方式</h2>
+                    </div>
+                </div>
+
+                <div class="contact-grid">
+                    <article class="contact-card">
+                        <h3>基本信息</h3>
+                        <div class="contact-list">
+                            <div class="contact-item">
+                                <div class="contact-label">姓名</div>
+                                <div class="contact-value">徐浚</div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-label">单位</div>
+                                <div class="contact-value">福州大学机械学院</div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-label">导师</div>
+                                <div class="contact-value">杜恒教授</div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-label">电话</div>
+                                <!-- TODO: Confirm whether to publish phone number -->
+                                <div class="contact-value">暂不公开</div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-label">邮箱</div>
+                                <div class="contact-value"><a href="mailto:xujun_fzu@126.com">xujun_fzu@126.com</a></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="contact-card">
+                        <h3>相关链接</h3>
+                        <div class="link-list">
+                            <!-- TODO: GitHub URL -->
+                            <div class="link-item">
+                                代码仓库
+                                <span>链接待补充</span>
+                            </div>
+                            <a class="link-item" href="https://orcid.org/0009-0004-7286-7874" target="_blank" rel="noopener noreferrer">
+                                ORCID
+                                <span>0009-0004-7286-7874</span>
+                            </a>
+                            <a class="link-item" href="html/news.html">
+                                动态归档
+                                <span>完整时间线</span>
+                            </a>
+                            <a class="link-item" href="html/stats.html">
+                                站点统计
+                                <span>站点运行数据</span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">© 2026 徐浚</div>
+    </footer>
+
+    <script>
+        (function () {
+            const toggle = document.getElementById("navToggle");
+            const nav = document.getElementById("siteNav");
+            if (!toggle || !nav) return;
+
+            toggle.addEventListener("click", function () {
+                nav.classList.toggle("open");
+            });
+
+            nav.querySelectorAll("a").forEach(function (link) {
+                link.addEventListener("click", function () {
+                    nav.classList.remove("open");
+                });
+            });
+        })();
+    </script>
+    <script src="js/visit-tracker.js" defer></script>
+</body>
+</html>

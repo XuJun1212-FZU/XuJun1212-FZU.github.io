@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 950" role="img" aria-labelledby="title desc">
+  <title id="title">论文配图待补充</title>
+  <desc id="desc">用于保持论文卡片布局的中性占位图</desc>
+  <rect width="760" height="950" fill="#eef4f8"/>
+  <rect x="120" y="125" width="520" height="650" rx="18" fill="#ffffff" stroke="#416f97" stroke-width="10"/>
+  <rect x="190" y="230" width="380" height="24" rx="12" fill="#7ea9d0"/>
+  <rect x="190" y="310" width="300" height="18" rx="9" fill="#b5d2ee"/>
+  <rect x="190" y="360" width="340" height="18" rx="9" fill="#b5d2ee"/>
+  <rect x="190" y="410" width="280" height="18" rx="9" fill="#b5d2ee"/>
+  <text x="380" y="865" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" fill="#274d70">Publication image - TODO</text>
+</svg>

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>访问统计 | 徐浚</title>
+  <meta name="description" content="徐浚个人学术主页的本地访问统计页面。">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --ink: #1f2937;
+      --muted: #5f6b7a;
+      --line: #d8dee6;
+      --accent: #2f5a82;
+      --accent-soft: #e8eff6;
+      --shadow: 0 14px 32px rgba(23, 38, 54, 0.07);
+      --radius: 16px;
+      --container: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      line-height: 1.75;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(var(--container), calc(100% - 40px)); margin: 0 auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(244, 246, 248, 0.94);
+      border-bottom: 1px solid rgba(216, 222, 230, 0.95);
+      backdrop-filter: blur(10px);
+    }
+    .site-header-inner {
+      min-height: 64px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      position: relative;
+    }
+    .brand { display: flex; flex-direction: column; gap: 2px; }
+    .brand-title { font-size: 22px; font-weight: 700; }
+    .brand-subtitle { font-size: 12px; color: var(--muted); }
+    .nav { display: flex; align-items: center; gap: 20px; color: var(--muted); font-size: 14px; }
+    .nav a { position: relative; padding: 6px 0; }
+    .nav a::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+      background: var(--accent); transform: scaleX(0); transform-origin: left center; transition: transform 0.2s ease;
+    }
+    .nav a:hover::after, .nav a:focus-visible::after { transform: scaleX(1); }
+    .nav-toggle { display: none; width: 40px; height: 40px; padding: 0; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+    .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
+      display: block; width: 18px; height: 2px; margin: 0 auto; background: var(--accent); border-radius: 999px; content: "";
+    }
+    .nav-toggle span::before { transform: translateY(-6px); }
+    .nav-toggle span::after { transform: translateY(4px); }
+    main { padding: 28px 0 48px; }
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center;
+      padding: 5px 12px; border-radius: 999px;
+      background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 700;
+      margin-bottom: 14px;
+    }
+    h1 { margin: 0 0 10px; font-size: 42px; line-height: 1.12; }
+    .summary { max-width: 760px; margin: 0 0 18px; color: var(--muted); font-size: 15px; }
+    .status-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+    .status-pill {
+      padding: 6px 10px; border-radius: 999px; background: var(--surface-soft); border: 1px solid var(--line);
+      color: var(--muted); font-size: 12px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .metric {
+      background: linear-gradient(180deg, #fff, #fbfcfe);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+      min-height: 104px;
+    }
+    .metric-label { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+    .metric-value { font-size: 28px; font-weight: 700; color: var(--ink); line-height: 1.1; }
+    .metric-note { font-size: 12px; color: var(--muted); margin-top: 8px; }
+    .panel-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    .panel-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    .panel-title { margin: 0; font-size: 18px; }
+    .panel-subtitle { color: var(--muted); font-size: 12px; }
+    .map-wrap { position: relative; min-height: 520px; }
+    #chinaMap { width: 100%; height: 520px; }
+    .side-grid { display: grid; gap: 16px; }
+    #trendChart { width: 100%; height: 240px; }
+    .log-list { display: grid; gap: 10px; }
+    .log-row {
+      display: grid;
+      grid-template-columns: 82px 80px 1fr;
+      gap: 10px;
+      align-items: center;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--surface-soft);
+    }
+    .log-time { color: var(--accent); font-weight: 700; font-size: 13px; }
+    .log-meta { color: var(--muted); font-size: 12px; line-height: 1.45; word-break: break-word; }
+    .section-note {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .province-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .province-chip {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: #fff;
+      font-size: 13px;
+    }
+    .province-chip span:last-child { color: var(--accent); font-weight: 700; }
+    .site-footer { padding: 24px 0 36px; color: var(--muted); font-size: 13px; }
+
+    @media (max-width: 1024px) {
+      .stats-grid, .panel-grid { grid-template-columns: 1fr; }
+      .map-wrap, #chinaMap { min-height: 420px; height: 420px; }
+    }
+
+    @media (max-width: 768px) {
+      .container { width: min(var(--container), calc(100% - 28px)); }
+      .site-header-inner { min-height: 58px; }
+      .nav-toggle { display: inline-grid; place-items: center; }
+      .nav {
+        position: absolute; top: calc(100% + 1px); left: 0; right: 0;
+        display: grid; gap: 0; padding: 8px 14px 14px;
+        background: rgba(244, 246, 248, 0.98); border-bottom: 1px solid var(--line);
+        transform: translateY(-10px); opacity: 0; pointer-events: none;
+      }
+      .nav.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+      .nav a { padding: 10px 0; }
+      h1 { font-size: 32px; }
+      .hero { padding: 20px; }
+      .metric-value { font-size: 24px; }
+      .log-row { grid-template-columns: 70px 72px 1fr; }
+      .province-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container site-header-inner">
+      <div class="brand">
+        <div class="brand-title">徐浚</div>
+        <div class="brand-subtitle">访问统计</div>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="切换导航"><span></span></button>
+      <nav class="nav" id="siteNav">
+        <a href="../index.html#overview">简介</a>
+        <a href="../index.html#research">研究</a>
+        <a href="../index.html#publications">论文</a>
+        <a href="../index.html#news">动态</a>
+        <a href="../index.html#profile">经历</a>
+        <a href="../index.html#contact">联系</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero">
+        <span class="eyebrow">统计面板</span>
+        <h1>浏览量</h1>
+        <div class="status-row">
+          <span class="status-pill" id="dataStatus">等待接口数据</span>
+          <span class="status-pill">原始 IP 不入库</span>
+          <span class="status-pill">哈希按日轮换</span>
+          <span class="status-pill">保留 30 天明细</span>
+        </div>
+
+        <div class="stats-grid">
+          <article class="metric">
+            <div class="metric-label">总浏览量</div>
+            <div class="metric-value" id="totalVisits">0</div>
+            <div class="metric-note">站点全量累计访问次数</div>
+          </article>
+          <article class="metric">
+            <div class="metric-label">当日浏览量</div>
+            <div class="metric-value" id="todayVisits">0</div>
+            <div class="metric-note">按北京时间自然日统计</div>
+          </article>
+          <article class="metric">
+            <div class="metric-label">当日匿名访客</div>
+            <div class="metric-value" id="todayUnique">0</div>
+            <div class="metric-note">同日脱敏哈希去重</div>
+          </article>
+          <article class="metric">
+            <div class="metric-label">活跃省份</div>
+            <div class="metric-value" id="activeProvinces">0</div>
+            <div class="metric-note">当日有访问记录的省份数量</div>
+          </article>
+        </div>
+
+        <div class="panel-grid">
+          <section class="panel">
+            <div class="panel-head">
+              <div>
+                <h2 class="panel-title">访问热力图</h2>
+              </div>
+              <div class="panel-subtitle" id="mapUpdated">--</div>
+            </div>
+            <div class="map-wrap">
+              <div id="chinaMap"></div>
+            </div>
+            <div class="province-list" id="provinceList"></div>
+          </section>
+
+          <div class="side-grid">
+            <section class="panel">
+              <div class="panel-head">
+                <div>
+                  <h2 class="panel-title">最近 7 日趋势</h2>
+                  <div class="panel-subtitle">总浏览量与匿名访客</div>
+                </div>
+              </div>
+              <div id="trendChart"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-head">
+                <div>
+                  <h2 class="panel-title">最近访问记录</h2>
+                </div>
+              </div>
+              <div class="log-list" id="logList"></div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© 2026 徐浚，本地匿名统计面板</div>
+  </footer>
+
+  <script src="../js/vendor/echarts.min.js"></script>
+  <script src="../js/visit-tracker.js"></script>
+  <script>
+    const el = (id) => document.getElementById(id);
+    const totalVisits = el("totalVisits");
+    const todayVisits = el("todayVisits");
+    const todayUnique = el("todayUnique");
+    const activeProvinces = el("activeProvinces");
+    const dataStatus = el("dataStatus");
+    const mapUpdated = el("mapUpdated");
+    const provinceList = el("provinceList");
+    const logList = el("logList");
+    const chart = echarts.init(document.getElementById("chinaMap"));
+    const trendChart = echarts.init(document.getElementById("trendChart"));
+    const PROVINCE_NAME_MAP = {
+      "北京": "北京市",
+      "上海": "上海市",
+      "天津": "天津市",
+      "重庆": "重庆市",
+      "河北": "河北省",
+      "山西": "山西省",
+      "辽宁": "辽宁省",
+      "吉林": "吉林省",
+      "黑龙江": "黑龙江省",
+      "江苏": "江苏省",
+      "浙江": "浙江省",
+      "安徽": "安徽省",
+      "福建": "福建省",
+      "江西": "江西省",
+      "山东": "山东省",
+      "河南": "河南省",
+      "湖北": "湖北省",
+      "湖南": "湖南省",
+      "广东": "广东省",
+      "海南": "海南省",
+      "四川": "四川省",
+      "贵州": "贵州省",
+      "云南": "云南省",
+      "陕西": "陕西省",
+      "甘肃": "甘肃省",
+      "青海": "青海省",
+      "台湾": "台湾省",
+      "内蒙古": "内蒙古自治区",
+      "广西": "广西壮族自治区",
+      "西藏": "西藏自治区",
+      "宁夏": "宁夏回族自治区",
+      "新疆": "新疆维吾尔自治区",
+      "香港": "香港特别行政区",
+      "澳门": "澳门特别行政区"
+    };
+    const emptyData = {
+      generatedAt: Date.now(),
+      total: 0,
+      todayTotal: 0,
+      todayUnique: 0,
+      activeProvinces: 0,
+      provinces: [],
+      trend: [],
+      recent: []
+    };
+    let mapLoaded = false;
+    // TODO: Configure personal Cloudflare analytics
+    const DEFAULT_ANALYTICS_BASE = "";
+    const configuredBase = typeof window !== "undefined" && typeof window.__ANALYTICS_BASE__ === "string"
+      ? window.__ANALYTICS_BASE__.trim()
+      : "";
+    const analyticsBase = (configuredBase || DEFAULT_ANALYTICS_BASE).replace(/\/+$/, "");
+    const analyticsEndpoint = analyticsBase ? `${analyticsBase}/api/analytics?days=14` : "";
+    const OFFLINE_KEY = "xujun_analytics_offline_v1";
+
+    document.getElementById("navToggle").addEventListener("click", () => {
+      document.getElementById("siteNav").classList.toggle("open");
+    });
+
+    function shanghaiDayKey(ts) {
+      return new Date(ts).toLocaleDateString("en-CA", { timeZone: "Asia/Shanghai" });
+    }
+
+    function readOfflineData() {
+      try {
+        const raw = localStorage.getItem(OFFLINE_KEY);
+        if (!raw) return { ...emptyData, generatedAt: Date.now() };
+        const payload = JSON.parse(raw);
+        const today = shanghaiDayKey(Date.now());
+        const days = payload.days || {};
+        const provincesObj = payload.provinces || {};
+        const recentRows = Array.isArray(payload.recent) ? payload.recent : [];
+
+        const trend = Object.keys(days)
+          .sort()
+          .slice(-14)
+          .map((day) => ({
+            day,
+            total: Number(days[day]?.total || 0),
+            unique: Number(days[day]?.unique || 0)
+          }));
+
+        const provinces = Object.keys(provincesObj).map((name) => ({
+          name,
+          value: Number(provincesObj[name] || 0)
+        })).sort((a, b) => b.value - a.value);
+
+        const recent = recentRows.slice(0, 12).map((row) => ({
+          time: new Date(row.ts || Date.now()).toLocaleTimeString("zh-CN", { hour12: false }),
+          hash: String(row.hash || "").slice(0, 8),
+          province: row.province || "未知",
+          path: row.path || "/"
+        }));
+
+        return {
+          generatedAt: Date.now(),
+          today,
+          total: Number(payload.total || 0),
+          todayTotal: Number(days[today]?.total || 0),
+          todayUnique: Number(days[today]?.unique || 0),
+          activeProvinces: provinces.length,
+          provinces,
+          trend,
+          recent
+        };
+      } catch {
+        return { ...emptyData, generatedAt: Date.now() };
+      }
+    }
+
+    async function tryRegisterMap(url) {
+      const response = await fetch(url, { cache: "force-cache" });
+      if (!response.ok) {
+        throw new Error(`map source unavailable: ${url}`);
+      }
+      const geojson = await response.json();
+      echarts.registerMap("china", geojson);
+      return true;
+    }
+
+    async function loadMapData() {
+      if (mapLoaded) return;
+      const sources = [
+        "../file/china.json",
+        "https://geo.datav.aliyun.com/areas_v3/bound/100000_full.json"
+      ];
+      let lastError = null;
+      for (const source of sources) {
+        try {
+          await tryRegisterMap(source);
+          mapLoaded = true;
+          return;
+        } catch (error) {
+          lastError = error;
+        }
+      }
+      throw lastError || new Error("china map source unavailable");
+    }
+
+    function renderMetrics(data, sourceLabel) {
+      totalVisits.textContent = data.total.toLocaleString("zh-CN");
+      todayVisits.textContent = data.todayTotal.toLocaleString("zh-CN");
+      todayUnique.textContent = data.todayUnique.toLocaleString("zh-CN");
+      activeProvinces.textContent = data.activeProvinces.toLocaleString("zh-CN");
+      dataStatus.textContent = sourceLabel;
+      mapUpdated.textContent = `更新时间 ${new Date(data.generatedAt).toLocaleString("zh-CN", { hour12: false })}`;
+    }
+
+    function renderProvinceList(data) {
+      provinceList.innerHTML = "";
+      const rows = [...data.provinces].sort((a, b) => b.value - a.value).slice(0, 8);
+      rows.forEach((row) => {
+        const item = document.createElement("div");
+        item.className = "province-chip";
+        item.innerHTML = `<span>${row.name}</span><span>${row.value}</span>`;
+        provinceList.appendChild(item);
+      });
+    }
+
+    function renderLogs(data) {
+      logList.innerHTML = "";
+      data.recent.forEach((row) => {
+        const item = document.createElement("div");
+        item.className = "log-row";
+        item.innerHTML = `
+          <div class="log-time">${row.time}</div>
+          <div class="log-meta">#${row.hash}</div>
+          <div class="log-meta">${row.province} · ${row.path}</div>
+        `;
+        logList.appendChild(item);
+      });
+    }
+
+    async function renderMap(data) {
+      try {
+        await loadMapData();
+        const provinceValues = data.provinces.map((item) => ({
+          name: PROVINCE_NAME_MAP[item.name] || item.name,
+          value: item.value
+        })).filter((item) => item.name && item.name !== "未知");
+        chart.setOption({
+          backgroundColor: "#ffffff",
+          tooltip: { trigger: "item" },
+          visualMap: {
+            min: 0,
+            max: Math.max(10, ...provinceValues.map((item) => item.value)),
+            left: 16,
+            bottom: 14,
+            text: ["高", "低"],
+            inRange: { color: ["#e6f0fa", "#b5d2ee", "#7ea9d0", "#416f97", "#274d70"] },
+            textStyle: { color: "#60798e" }
+          },
+          series: [{
+            name: "匿名访问量",
+            type: "map",
+            map: "china",
+            roam: false,
+            emphasis: { label: { color: "#17314f" } },
+            label: { show: false },
+            itemStyle: { borderColor: "#d8e2eb" },
+            data: provinceValues
+          }]
+        });
+      } catch (error) {
+        chart.clear();
+        chart.setOption({
+          title: {
+            text: "热力图底图加载失败",
+            left: "center",
+            top: "middle",
+            textStyle: { color: "#5f6b7a", fontSize: 14, fontWeight: "normal" }
+          }
+        });
+      }
+    }
+
+    function renderTrend(data) {
+      const rawTrend = Array.isArray(data.trend) ? data.trend : [];
+      const trendMap = new Map(rawTrend.map((item) => [String(item.day || ""), item]));
+      const fallbackTrend = [];
+      for (let i = 6; i >= 0; i -= 1) {
+        const ts = Date.now() - i * 24 * 60 * 60 * 1000;
+        const dayKey = new Date(ts).toLocaleDateString("en-CA", { timeZone: "Asia/Shanghai" });
+        const existing = trendMap.get(dayKey);
+        fallbackTrend.push({
+          day: dayKey.slice(5),
+          total: Number(existing?.total || 0),
+          unique: Number(existing?.unique || 0)
+        });
+      }
+
+      trendChart.setOption({
+        grid: { left: 36, right: 14, top: 18, bottom: 28 },
+        tooltip: { trigger: "axis" },
+        xAxis: {
+          type: "category",
+          data: fallbackTrend.map((item) => item.day),
+          axisLine: { lineStyle: { color: "#d8dee6" } },
+          axisLabel: { color: "#5f6b7a" }
+        },
+        yAxis: {
+          type: "value",
+          axisLine: { show: false },
+          splitLine: { lineStyle: { color: "#edf1f5" } },
+          axisLabel: { color: "#5f6b7a" }
+        },
+        legend: {
+          top: 0,
+          textStyle: { color: "#5f6b7a" },
+          data: ["浏览量", "匿名访客"]
+        },
+        series: [
+          {
+            name: "浏览量",
+            type: "line",
+            smooth: true,
+            symbol: "circle",
+            symbolSize: 7,
+            lineStyle: { color: "#2f5a82", width: 3 },
+            itemStyle: { color: "#2f5a82" },
+            areaStyle: { color: "rgba(47, 90, 130, 0.08)" },
+            data: fallbackTrend.map((item) => item.total)
+          },
+          {
+            name: "匿名访客",
+            type: "line",
+            smooth: true,
+            symbol: "circle",
+            symbolSize: 7,
+            lineStyle: { color: "#7c97b4", width: 3 },
+            itemStyle: { color: "#7c97b4" },
+            data: fallbackTrend.map((item) => item.unique)
+          }
+        ]
+      });
+    }
+
+    async function loadAnalytics() {
+      if (!analyticsEndpoint) {
+        const offline = readOfflineData();
+        renderMetrics(offline, "本地统计（远程服务未配置）");
+        renderProvinceList(offline);
+        renderLogs(offline);
+        renderMap(offline);
+        renderTrend(offline);
+        return;
+      }
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 3000);
+        const response = await fetch(analyticsEndpoint, {
+          cache: "no-store",
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+        if (!response.ok) throw new Error("analytics endpoint unavailable");
+        const data = await response.json();
+        renderMetrics(data, "实时数据");
+        renderProvinceList(data);
+        renderLogs(data);
+        renderMap(data);
+        renderTrend(data);
+      } catch (error) {
+        const offline = readOfflineData();
+        const label = offline.total > 0 ? "本地离线统计（网络受限）" : "后端暂不可达";
+        renderMetrics(offline, label);
+        renderProvinceList(offline);
+        renderLogs(offline);
+        renderMap(offline);
+        renderTrend(offline);
+      }
+    }
+
+    loadAnalytics();
+    const analyticsTimer = setInterval(() => {
+      if (document.visibilityState === "visible") {
+        loadAnalytics();
+      }
+    }, 60000);
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") {
+        loadAnalytics();
+      }
+    });
+    window.addEventListener("beforeunload", () => clearInterval(analyticsTimer));
+    window.addEventListener("resize", () => {
+      chart.resize();
+      trendChart.resize();
+    });
+  </script>
+</body>
+</html>

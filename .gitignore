@@ -1,0 +1,5 @@
+# Local source material containing private contact details
+personal_data/*不可编辑.pdf
+
+# Temporary PDF rendering and QA artifacts
+tmp/
