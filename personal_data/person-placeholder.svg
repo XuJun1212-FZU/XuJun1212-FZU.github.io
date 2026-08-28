@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="750" viewBox="0 0 600 750" role="img" aria-labelledby="title desc">
+  <title id="title">人物照片待补充</title>
+  <desc id="desc">用于指导老师和团队人员卡片的中性人物照片占位图</desc>
+  <rect width="600" height="750" fill="#e8eff6"/>
+  <circle cx="300" cy="250" r="104" fill="#b8c9d9"/>
+  <path d="M128 655c12-142 78-224 172-224s160 82 172 224" fill="#b8c9d9"/>
+  <rect x="86" y="82" width="428" height="586" rx="28" fill="none" stroke="#8da7be" stroke-width="6"/>
+  <text x="300" y="710" text-anchor="middle" font-family="Arial, 'Microsoft YaHei', sans-serif" font-size="28" fill="#496984">PHOTO · TODO</text>
+</svg>

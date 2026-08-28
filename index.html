@@ -340,11 +340,7 @@
 
         section {
             padding: 22px 0;
-        }
-
-        main > section:not(.hero) {
-            content-visibility: auto;
-            contain-intrinsic-size: 1px 960px;
+            scroll-margin-top: 78px;
         }
 
         .section-head {
@@ -687,6 +683,139 @@
             font-weight: 500;
         }
 
+        .people-section-head {
+            align-items: center;
+        }
+
+        .people-heading-copy {
+            display: grid;
+            gap: 6px;
+        }
+
+        .people-slider {
+            position: relative;
+        }
+
+        .people-track {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 240px;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 2px 2px 14px;
+            scroll-behavior: smooth;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+            scrollbar-color: #9cb0c2 transparent;
+            overscroll-behavior-inline: contain;
+            cursor: grab;
+        }
+
+        .people-track:active {
+            cursor: grabbing;
+        }
+
+        .people-track:focus-visible {
+            outline: 3px solid rgba(47, 90, 130, 0.28);
+            outline-offset: 4px;
+            border-radius: var(--radius);
+        }
+
+        .people-track::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .people-track::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .people-track::-webkit-scrollbar-thumb {
+            background: #9cb0c2;
+            border-radius: 999px;
+        }
+
+        .person-card {
+            overflow: hidden;
+            scroll-snap-align: start;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .person-photo {
+            overflow: hidden;
+            aspect-ratio: 4 / 5;
+            background: var(--accent-soft);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .person-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            user-select: none;
+            -webkit-user-drag: none;
+        }
+
+        .person-content {
+            min-height: 150px;
+            padding: 16px;
+        }
+
+        .person-name {
+            margin: 0 0 4px;
+            font-size: 18px;
+            line-height: 1.4;
+        }
+
+        .person-role {
+            margin: 0 0 8px;
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .person-intro {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .people-controls {
+            display: flex;
+            gap: 8px;
+            flex: 0 0 auto;
+        }
+
+        .people-arrow {
+            display: inline-grid;
+            place-items: center;
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: var(--surface);
+            color: var(--accent);
+            font: inherit;
+            font-size: 20px;
+            line-height: 1;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .people-arrow:hover:not(:disabled),
+        .people-arrow:focus-visible:not(:disabled) {
+            border-color: var(--accent);
+            background: var(--accent-soft);
+        }
+
+        .people-arrow:disabled {
+            opacity: 0.35;
+            cursor: default;
+        }
+
         .site-footer {
             padding: 26px 0 36px;
             color: var(--muted);
@@ -794,6 +923,14 @@
             .news-actions {
                 justify-self: start;
             }
+
+            .people-track {
+                grid-auto-columns: min(76vw, 260px);
+            }
+
+            .people-section-head {
+                align-items: end;
+            }
         }
     </style>
 </head>
@@ -814,6 +951,7 @@
                 <a href="#news">动态</a>
                 <a href="#profile">经历</a>
                 <a href="#contact">联系</a>
+                <a href="#advisors">团队</a>
             </nav>
         </div>
     </header>
@@ -1177,14 +1315,6 @@
                                 <div class="contact-value">杜恒教授</div>
                             </div>
                             <div class="contact-item">
-                                <div class="contact-label">指导老师</div>
-                                <div class="contact-value">杜恒、魏凌涛</div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-label">团队人员</div>
-                                <div class="contact-value">许其旭、孔翁睿、时佳琳、施宇晋、何震宇</div>
-                            </div>
-                            <div class="contact-item">
                                 <div class="contact-label">电话</div>
                                 <!-- TODO: Confirm whether to publish phone number -->
                                 <div class="contact-value">暂不公开</div>
@@ -1221,6 +1351,100 @@
                 </div>
             </div>
         </section>
+
+        <section id="advisors">
+            <div class="container">
+                <div class="section-head people-section-head">
+                    <div class="people-heading-copy">
+                        <h2 class="section-title">指导老师</h2>
+                        <p class="section-desc">可左右滑动查看更多人员</p>
+                    </div>
+                    <div class="people-controls" aria-label="指导老师列表翻页">
+                        <button class="people-arrow" type="button" data-carousel-button data-target="advisorTrack" data-direction="-1" aria-label="向左查看指导老师">‹</button>
+                        <button class="people-arrow" type="button" data-carousel-button data-target="advisorTrack" data-direction="1" aria-label="向右查看指导老师">›</button>
+                    </div>
+                </div>
+                <div class="people-slider">
+                    <div class="people-track" id="advisorTrack" tabindex="0" aria-label="指导老师列表，可横向滑动">
+                        <article class="person-card">
+                            <div class="person-photo"><img src="personal_data/person-placeholder.svg" alt="杜恒照片待补充" width="600" height="750" loading="lazy" decoding="async"></div>
+                            <div class="person-content">
+                                <h3 class="person-name">杜恒</h3>
+                                <p class="person-role">指导老师</p>
+                                <p class="person-intro">个人照片与简介待补充。</p>
+                            </div>
+                        </article>
+                        <article class="person-card">
+                            <div class="person-photo"><img src="personal_data/person-placeholder.svg" alt="魏凌涛照片待补充" width="600" height="750" loading="lazy" decoding="async"></div>
+                            <div class="person-content">
+                                <h3 class="person-name">魏凌涛</h3>
+                                <p class="person-role">指导老师</p>
+                                <p class="person-intro">个人照片与简介待补充。</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="team">
+            <div class="container">
+                <div class="section-head people-section-head">
+                    <div class="people-heading-copy">
+                        <h2 class="section-title">团队人员</h2>
+                        <p class="section-desc">可左右滑动查看更多人员</p>
+                    </div>
+                    <div class="people-controls" aria-label="团队人员列表翻页">
+                        <button class="people-arrow" type="button" data-carousel-button data-target="teamTrack" data-direction="-1" aria-label="向左查看团队人员">‹</button>
+                        <button class="people-arrow" type="button" data-carousel-button data-target="teamTrack" data-direction="1" aria-label="向右查看团队人员">›</button>
+                    </div>
+                </div>
+                <div class="people-slider">
+                    <div class="people-track" id="teamTrack" tabindex="0" aria-label="团队人员列表，可横向滑动">
+                        <article class="person-card">
+                            <div class="person-photo"><img src="personal_data/person-placeholder.svg" alt="许其旭照片待补充" width="600" height="750" loading="lazy" decoding="async"></div>
+                            <div class="person-content">
+                                <h3 class="person-name">许其旭</h3>
+                                <p class="person-role">团队成员</p>
+                                <p class="person-intro">个人照片与简介待补充。</p>
+                            </div>
+                        </article>
+                        <article class="person-card">
+                            <div class="person-photo"><img src="personal_data/person-placeholder.svg" alt="孔翁睿照片待补充" width="600" height="750" loading="lazy" decoding="async"></div>
+                            <div class="person-content">
+                                <h3 class="person-name">孔翁睿</h3>
+                                <p class="person-role">团队成员</p>
+                                <p class="person-intro">个人照片与简介待补充。</p>
+                            </div>
+                        </article>
+                        <article class="person-card">
+                            <div class="person-photo"><img src="personal_data/person-placeholder.svg" alt="时佳琳照片待补充" width="600" height="750" loading="lazy" decoding="async"></div>
+                            <div class="person-content">
+                                <h3 class="person-name">时佳琳</h3>
+                                <p class="person-role">团队成员</p>
+                                <p class="person-intro">个人照片与简介待补充。</p>
+                            </div>
+                        </article>
+                        <article class="person-card">
+                            <div class="person-photo"><img src="personal_data/person-placeholder.svg" alt="施宇晋照片待补充" width="600" height="750" loading="lazy" decoding="async"></div>
+                            <div class="person-content">
+                                <h3 class="person-name">施宇晋</h3>
+                                <p class="person-role">团队成员</p>
+                                <p class="person-intro">个人照片与简介待补充。</p>
+                            </div>
+                        </article>
+                        <article class="person-card">
+                            <div class="person-photo"><img src="personal_data/person-placeholder.svg" alt="何震宇照片待补充" width="600" height="750" loading="lazy" decoding="async"></div>
+                            <div class="person-content">
+                                <h3 class="person-name">何震宇</h3>
+                                <p class="person-role">团队成员</p>
+                                <p class="person-intro">个人照片与简介待补充。</p>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer">
@@ -1241,6 +1465,66 @@
                 link.addEventListener("click", function () {
                     nav.classList.remove("open");
                 });
+            });
+        })();
+
+        (function () {
+            const tracks = document.querySelectorAll(".people-track");
+
+            function updateButtons(track) {
+                const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+                document.querySelectorAll('[data-target="' + track.id + '"]').forEach(function (button) {
+                    const direction = Number(button.dataset.direction);
+                    button.disabled = direction < 0 ? track.scrollLeft <= 2 : track.scrollLeft >= maxScroll - 2;
+                });
+            }
+
+            document.querySelectorAll("[data-carousel-button]").forEach(function (button) {
+                button.addEventListener("click", function () {
+                    const track = document.getElementById(button.dataset.target);
+                    if (!track) return;
+                    const direction = Number(button.dataset.direction);
+                    track.scrollBy({ left: direction * Math.max(220, track.clientWidth * 0.82), behavior: "smooth" });
+                });
+            });
+
+            tracks.forEach(function (track) {
+                let dragging = false;
+                let startX = 0;
+                let startScroll = 0;
+
+                track.addEventListener("pointerdown", function (event) {
+                    if (event.pointerType !== "mouse" || event.button !== 0) return;
+                    dragging = true;
+                    startX = event.clientX;
+                    startScroll = track.scrollLeft;
+                    track.setPointerCapture(event.pointerId);
+                });
+
+                track.addEventListener("pointermove", function (event) {
+                    if (!dragging) return;
+                    track.scrollLeft = startScroll - (event.clientX - startX);
+                });
+
+                function stopDragging(event) {
+                    if (!dragging) return;
+                    dragging = false;
+                    if (track.hasPointerCapture(event.pointerId)) track.releasePointerCapture(event.pointerId);
+                }
+
+                track.addEventListener("pointerup", stopDragging);
+                track.addEventListener("pointercancel", stopDragging);
+                track.addEventListener("scroll", function () { updateButtons(track); }, { passive: true });
+                track.addEventListener("keydown", function (event) {
+                    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+                    event.preventDefault();
+                    track.scrollBy({ left: event.key === "ArrowLeft" ? -256 : 256, behavior: "smooth" });
+                });
+
+                updateButtons(track);
+                if ("ResizeObserver" in window) {
+                    new ResizeObserver(function () { updateButtons(track); }).observe(track);
+                }
             });
         })();
     </script>
