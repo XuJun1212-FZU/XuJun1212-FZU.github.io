@@ -73,6 +73,20 @@
 
         .brand {
             display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+            min-width: 0;
+        }
+
+        .brand-logo {
+            width: clamp(96px, 16vw, 210px);
+            height: auto;
+            flex: 0 0 auto;
+        }
+
+        .brand-copy {
+            display: flex;
             flex-direction: column;
             gap: 2px;
         }
@@ -80,6 +94,7 @@
         .brand-title {
             font-size: 22px;
             font-weight: 700;
+            white-space: nowrap;
         }
 
         .brand-subtitle {
@@ -831,6 +846,11 @@
         }
 
         @media (max-width: 1024px) {
+            .nav {
+                gap: 8px;
+                font-size: 12px;
+            }
+
             .hero-panel,
             .contact-grid,
             .split-grid,
@@ -846,6 +866,22 @@
 
             .site-header-inner {
                 min-height: 58px;
+            }
+
+            .brand {
+                gap: 8px;
+            }
+
+            .brand-logo {
+                width: 94px;
+            }
+
+            .brand-title {
+                font-size: 17px;
+            }
+
+            .brand-subtitle {
+                font-size: 10px;
             }
 
             .nav-toggle {
@@ -946,8 +982,11 @@
     <header class="site-header">
         <div class="container site-header-inner">
             <div class="brand">
-                <div class="brand-title">徐浚</div>
-                <div class="brand-subtitle">个人学术主页</div>
+                <img class="brand-logo" src="personal_data/lab-logo-blue.png" alt="流体动力与电液智能控制福建省高校重点实验室（福州大学）标识">
+                <div class="brand-copy">
+                    <div class="brand-title">福州大学 徐浚</div>
+                    <div class="brand-subtitle">个人学术主页</div>
+                </div>
             </div>
             <button class="nav-toggle" id="navToggle" aria-label="打开导航">
                 <span></span>
@@ -976,7 +1015,6 @@
                             ·福州大学 机械电子工程博士生（硕博连读）<br>
                             ·2025年中国科协青托博士生专项 入选者<br>
                             ·流控福建省重点实验室党支部 副书记<br>
-                            ·福州大学机械学院学生团委 原副书记<br>
                             ·福州智效重载科技有限公司 法人
                         </p>
                         <p class="hero-summary">
