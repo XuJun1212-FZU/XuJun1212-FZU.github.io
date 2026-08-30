@@ -79,10 +79,31 @@
             min-width: 0;
         }
 
-        .brand-logo {
-            width: clamp(96px, 16vw, 210px);
-            height: auto;
+        .brand-logos {
+            display: flex;
+            align-items: center;
+            gap: 6px;
             flex: 0 0 auto;
+        }
+
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            flex: 0 0 auto;
+            background: transparent;
+        }
+
+        .brand-logo-fzu {
+            transform: scale(1.04);
+        }
+
+        .brand-logo-institute {
+            transform: scale(1);
+        }
+
+        .brand-logo-zhixiao {
+            transform: scale(1.045);
         }
 
         .brand-copy {
@@ -872,8 +893,13 @@
                 gap: 8px;
             }
 
+            .brand-logos {
+                gap: 4px;
+            }
+
             .brand-logo {
-                width: 94px;
+                width: 28px;
+                height: 28px;
             }
 
             .brand-title {
@@ -982,7 +1008,11 @@
     <header class="site-header">
         <div class="container site-header-inner">
             <div class="brand">
-                <img class="brand-logo" src="personal_data/lab-logo-blue.png" alt="流体动力与电液智能控制福建省高校重点实验室（福州大学）标识">
+                <div class="brand-logos" aria-label="单位标识">
+                    <img class="brand-logo brand-logo-fzu" src="personal_data/fuzhou-university-logo.webp" alt="福州大学校徽">
+                    <img class="brand-logo brand-logo-institute" src="personal_data/hydraulic-institute-logo.webp" alt="福州大学液压与气动技术研究所标识">
+                    <img class="brand-logo brand-logo-zhixiao" src="personal_data/zhixiao-heavy-load-logo.webp" alt="福州智效重载科技有限公司标识">
+                </div>
                 <div class="brand-copy">
                     <div class="brand-title">福州大学 徐浚</div>
                     <div class="brand-subtitle">个人学术主页</div>
@@ -1008,8 +1038,8 @@
             <div class="container">
                 <div class="hero-panel">
                     <div class="hero-copy">
-                        <div class="eyebrow">机械电子工程博士研究生</div>
-                        <h1>徐浚</h1>
+                        <div class="eyebrow">中共党员</div>
+                        <h1>徐浚 Xavier-Joy</h1>
                         <!-- TODO: English name -->
                         <p class="hero-role">
                             ·福州大学 机械电子工程博士生（硕博连读）<br>
@@ -1018,15 +1048,14 @@
                             ·福州智效重载科技有限公司 法人
                         </p>
                         <p class="hero-summary">
-                            徐浚，福州大学机械学院机械电子工程专业2024级博士研究生（硕博连读），师从杜恒教授，依托流体动力与电液智能控制福建省高校重点实验室开展科研工作。主要研究方向为重型多轴运载装备电液智能控制技术，重点围绕重型多轴车辆电液转向系统、分布式重载电液转向轴模块、同源多驱电液系统能效机理与控制等开展研究。已发表SCI论文2篇，参编学术专著1部，并参与多项发明专利及国家、省部级科研项目。
+                            徐浚，男，2000年11月生，来自江西南昌（籍贯江西宜春丰城），2020年12月加入中国共产党，自2022年至今均在流体动力与电液智能控制福建省高校重点实验室（福州大学）进行博士阶段的学习（硕博连读），师从教育部青年长江学者-杜恒教授，主要研究方向是重型多轴运载装备电液智能控制技术，面向国家重大战略需求和军民装备发展需要，重点围绕分布式重载同源多驱电液转向轴模块能效机理与智能调控、分布式重载同源异驱电液角单元系统与控制等开展产学研工作。
                         </p>
                         <div class="hero-tags">
-                            <span class="tag">重型多轴车辆</span>
-                            <span class="tag">电液智能控制</span>
+                            <span class="tag">重型多轴运载装备</span>
                             <span class="tag">流体传动与控制</span>
-                            <span class="tag">电液转向</span>
-                            <span class="tag">能效控制</span>
-                            <span class="tag">多轴协同控制</span>
+                            <span class="tag">分布式重载多自由度驱控</span>
+                            <span class="tag">同源双驱与异驱系统</span>
+                            <span class="tag">能效机理与智能调控</span>
                         </div>
                         <div class="hero-actions">
                             <a class="button button-primary" href="#publications">代表性论文</a>
@@ -1381,6 +1410,14 @@
                             <a class="link-item" href="html/stats.html">
                                 站点统计
                                 <span>站点运行数据</span>
+                            </a>
+                            <a class="link-item" href="https://scholar.google.com/citations?hl=zh-CN&amp;user=yvkBtS8AAAAJ&amp;view_op=list_works&amp;gmla=AKCpqFywMUffw8xG1fZyqmGI-X6ansnMcGqq_-qfeXvlhIMXl7chMWaMCqBZvQQBIVzCQY6U9327h0tcYP_5LuOKNOJEAdYZxYh2Dk6OfAaX6wMJMOKzyWSHOA361BY_C09B" target="_blank" rel="noopener noreferrer">
+                                谷歌学术平台
+                                <span>Google Scholar</span>
+                            </a>
+                            <a class="link-item" href="https://www.researchgate.net/profile/Jun-Xu-169?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">
+                                研究之家平台
+                                <span>ResearchGate</span>
                             </a>
                         </div>
                     </article>
