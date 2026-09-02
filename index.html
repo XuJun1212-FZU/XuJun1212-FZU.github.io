@@ -785,9 +785,10 @@
 
         .person-photo {
             overflow: hidden;
-            aspect-ratio: 4 / 5;
+            margin: 12px 12px 0;
+            aspect-ratio: 1 / 1.22;
             background: var(--accent-soft);
-            border-bottom: 1px solid var(--line);
+            border-radius: 12px;
         }
 
         .person-photo img {
@@ -861,9 +862,29 @@
         }
 
         .site-footer {
-            padding: 26px 0 36px;
+            overflow: hidden;
+            padding: 26px 0 0;
             color: var(--muted);
             font-size: 13px;
+        }
+
+        .footer-meta {
+            padding-bottom: clamp(12px, 2vw, 22px);
+        }
+
+        .footer-skyline {
+            width: 100%;
+            line-height: 0;
+        }
+
+        .footer-skyline-art {
+            width: 120%;
+            aspect-ratio: 4250 / 334;
+            max-height: 220px;
+            margin: 0 -10%;
+            background: var(--ink);
+            -webkit-mask: url("personal_data/fzu-campus-skyline-footer.png") center bottom / contain no-repeat;
+            mask: url("personal_data/fzu-campus-skyline-footer.png") center bottom / contain no-repeat;
         }
 
         @media (max-width: 1024px) {
@@ -995,11 +1016,25 @@
             }
 
             .people-track {
-                grid-auto-columns: min(76vw, 260px);
+                grid-auto-columns: 150px;
             }
 
             .people-section-head {
                 align-items: end;
+            }
+
+            .site-footer {
+                padding-top: 22px;
+            }
+
+            .footer-meta {
+                padding-bottom: 12px;
+                text-align: center;
+            }
+
+            .footer-skyline-art {
+                width: 150%;
+                margin: 0 -25%;
             }
         }
     </style>
@@ -1521,7 +1556,10 @@
     </main>
 
     <footer class="site-footer">
-        <div class="container">© 2026 徐浚</div>
+        <div class="container footer-meta">© 2026 徐浚</div>
+        <div class="footer-skyline">
+            <div class="footer-skyline-art" role="img" aria-label="福州大学校园建筑线稿"></div>
+        </div>
     </footer>
 
     <script>
