@@ -869,7 +869,18 @@
         }
 
         .footer-meta {
-            padding-bottom: clamp(12px, 2vw, 22px);
+            padding-bottom: 8px;
+        }
+
+        .footer-motto {
+            margin: 0 auto clamp(14px, 2vw, 24px);
+            color: var(--ink);
+            font-family: "STKaiti", "KaiTi", "FangSong", "Songti SC", serif;
+            font-size: clamp(18px, 2.2vw, 28px);
+            font-weight: 600;
+            line-height: 1.5;
+            letter-spacing: 0.18em;
+            text-align: center;
         }
 
         .footer-skyline {
@@ -1028,8 +1039,15 @@
             }
 
             .footer-meta {
-                padding-bottom: 12px;
+                padding-bottom: 8px;
                 text-align: center;
+            }
+
+            .footer-motto {
+                margin-bottom: 12px;
+                padding: 0 18px;
+                font-size: 18px;
+                letter-spacing: 0.12em;
             }
 
             .footer-skyline-art {
@@ -1100,7 +1118,7 @@
                         <div class="hero-facts">
                             <div class="hero-fact">
                                 <div class="hero-fact-label">代表性论文</div>
-                                <div class="hero-fact-value">SCI 论文 2 篇</div>
+                                <div class="hero-fact-value">SCI 论文 3 篇</div>
                             </div>
                             <div class="hero-fact">
                                 <div class="hero-fact-label">科研项目</div>
@@ -1169,6 +1187,24 @@
                 </div>
 
                 <div class="pub-list">
+                    <article class="pub-item">
+                        <div class="pub-year">2026</div>
+                        <div class="pub-cover pub-cover-a">
+                            <img class="pub-poster" src="personal_data/publication-measurement-2026-cover.png" alt="Measurement 2026智能轮胎纵向力测量论文主题海报" width="1055" height="1491" loading="lazy" decoding="async" fetchpriority="low">
+                        </div>
+                        <div class="pub-main">
+                            <h3 class="pub-title">Novel intelligent tire longitudinal force measurement system based on multi-granularity hierarchical collaborative networks</h3>
+                            <p class="pub-text">基于多粒度分层协同网络的智能轮胎纵向力测量系统研究。</p>
+                            <div class="pub-meta">
+                                <span class="meta-tag">Measurement, 2026</span>
+                                <span class="meta-tag">Volume 265</span>
+                                <span class="meta-tag">Article 120415</span>
+                                <span class="meta-tag">Third Author</span>
+                            </div>
+                        </div>
+                        <a class="button pub-cta" href="https://www.sciencedirect.com/science/article/abs/pii/S0263224126001247" target="_blank" rel="noopener noreferrer" aria-label="查看Measurement论文（新窗口打开）">论文链接</a>
+                    </article>
+
                     <article class="pub-item">
                         <div class="pub-year">2025</div>
                         <div class="pub-cover pub-cover-a">
@@ -1557,6 +1593,7 @@
 
     <footer class="site-footer">
         <div class="container footer-meta">© 2026 徐浚</div>
+        <p class="container footer-motto">道阻且长，行则将至；行而不辍，未来可期</p>
         <div class="footer-skyline">
             <div class="footer-skyline-art" role="img" aria-label="福州大学校园建筑线稿"></div>
         </div>
