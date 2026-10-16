@@ -408,6 +408,8 @@
 
         .section-card {
             display: grid;
+            grid-template-rows: 32px auto auto 1fr;
+            align-content: start;
             gap: 12px;
             padding: 16px;
         }
@@ -441,7 +443,8 @@
         }
 
         .section-card h3 {
-            margin: 0 0 8px;
+            min-height: 2.8em;
+            margin: 0;
             font-size: 18px;
             line-height: 1.4;
         }
