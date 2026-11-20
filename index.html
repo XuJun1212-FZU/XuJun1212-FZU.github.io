@@ -541,6 +541,56 @@
             font-size: 14px;
         }
 
+
+        .pub-authors {
+            margin: 8px 0 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.7;
+            overflow-wrap: anywhere;
+        }
+
+        .pub-details {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+            margin: 12px 0 0;
+        }
+
+        .pub-detail {
+            display: flex;
+            align-items: baseline;
+            min-width: 0;
+            padding: 9px 11px;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            background: var(--surface-soft);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .pub-detail-journal {
+            grid-column: 1 / -1;
+        }
+
+        .pub-detail dt {
+            flex: 0 0 auto;
+            color: var(--muted);
+        }
+
+        .pub-detail dd {
+            min-width: 0;
+            margin: 0;
+            color: var(--ink);
+            overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 640px) {
+            .pub-details {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
         .pub-meta {
             margin-top: 8px;
             display: flex;
@@ -1245,12 +1295,18 @@
                         </div>
                         <div class="pub-main">
                             <h3 class="pub-title">Energy-efficiency coupling mechanisms of a distributed shared-source dual-drive electrohydraulic steering system for heavy-duty vehicles</h3>
-                            <p class="pub-text">重载车辆分布式同源双驱电液转向系统能效耦合机理研究。</p>
+                            <p class="pub-text">重型车辆分布式同源双驱电液转向系统能效机理分析与调控</p>
+                            <p class="pub-authors">作者：杜恒 <sup>*</sup>, 孔翁睿, 徐浚, 时佳琳, 魏凌涛, 许其旭</p>
+                            <dl class="pub-details" aria-label="论文信息">
+                                <div class="pub-detail pub-detail-journal"><dt>期刊：</dt><dd>Proc. Inst. Mech. Eng. Part D - J. Automob. Eng</dd></div>
+                                <div class="pub-detail"><dt>排序：</dt><dd>第三作者</dd></div>
+                                <div class="pub-detail"><dt>分区：</dt><dd>中科协 T2 / 4区</dd></div>
+                                <div class="pub-detail"><dt>被引次数：</dt><dd>待补充</dd></div>
+                                <div class="pub-detail"><dt>接收时间：</dt><dd>2026.11.19</dd></div>
+                                <div class="pub-detail"><dt>发表时间：</dt><dd>待补充</dd></div>
+                            </dl>
                             <div class="pub-meta">
-                                <span class="meta-tag">Proc. Inst. Mech. Eng. Part D - J. Automob. Eng</span>
-                                <span class="meta-tag">中科协 T2 / 4区</span>
                                 <span class="meta-tag">IF: 1.5</span>
-                                <span class="meta-tag">第三作者 · Third Author</span>
                             </div>
                         </div>
                         <span class="pub-cta meta-tag">论文链接暂未提供</span>
@@ -1264,11 +1320,17 @@
                         <div class="pub-main">
                             <h3 class="pub-title">Novel intelligent tire longitudinal force measurement system based on multi-granularity hierarchical collaborative networks</h3>
                             <p class="pub-text">基于多粒度分层协同网络的智能轮胎纵向力测量系统研究。</p>
+                            <dl class="pub-details" aria-label="论文信息">
+                                <div class="pub-detail pub-detail-journal"><dt>期刊：</dt><dd>Measurement</dd></div>
+                                <div class="pub-detail"><dt>排序：</dt><dd>第三作者</dd></div>
+                                <div class="pub-detail"><dt>分区：</dt><dd>中科院二区</dd></div>
+                                <div class="pub-detail"><dt>被引次数：</dt><dd>待补充</dd></div>
+                                <div class="pub-detail"><dt>接收时间：</dt><dd>待补充</dd></div>
+                                <div class="pub-detail"><dt>发表时间：</dt><dd>2026年（具体日期待补充）</dd></div>
+                            </dl>
                             <div class="pub-meta">
-                                <span class="meta-tag">Measurement, 2026</span>
                                 <span class="meta-tag">Volume 265</span>
                                 <span class="meta-tag">Article 120415</span>
-                                <span class="meta-tag">Third Author</span>
                             </div>
                         </div>
                         <a class="button pub-cta" href="https://www.sciencedirect.com/science/article/abs/pii/S0263224126001247" target="_blank" rel="noopener noreferrer" aria-label="查看Measurement论文（新窗口打开）">论文链接</a>
@@ -1282,11 +1344,14 @@
                         <div class="pub-main">
                             <h3 class="pub-title">Energy-Efficient Design and Power Flow Analysis of Electro-Hydraulic Steering Systems for Heavy-Duty Wheeled Vehicles Via Parameter Identification</h3>
                             <p class="pub-text">重型轮式车辆电液转向系统节能设计与功率流分析研究。</p>
-                            <div class="pub-meta">
-                                <span class="meta-tag">Energy, 2025</span>
-                                <span class="meta-tag">CAS Q1 TOP</span>
-                                <span class="meta-tag">First Author</span>
-                            </div>
+                            <dl class="pub-details" aria-label="论文信息">
+                                <div class="pub-detail pub-detail-journal"><dt>期刊：</dt><dd>Energy</dd></div>
+                                <div class="pub-detail"><dt>排序：</dt><dd>第一作者</dd></div>
+                                <div class="pub-detail"><dt>分区：</dt><dd>中科院一区 TOP</dd></div>
+                                <div class="pub-detail"><dt>被引次数：</dt><dd>待补充</dd></div>
+                                <div class="pub-detail"><dt>接收时间：</dt><dd>待补充</dd></div>
+                                <div class="pub-detail"><dt>发表时间：</dt><dd>2025年（具体日期待补充）</dd></div>
+                            </dl>
                         </div>
                         <a class="button pub-cta" href="https://www.sciencedirect.com/science/article/pii/S0360544225012046" target="_blank" rel="noopener noreferrer" aria-label="查看Energy论文（新窗口打开）">论文链接</a>
                     </article>
@@ -1299,12 +1364,14 @@
                         <div class="pub-main">
                             <h3 class="pub-title">High-performance steering tracking control of open circuit variable-speed pump-controlled steering system for heavy-duty vehicles based on flow nonlinearity compensation</h3>
                             <p class="pub-text">面向重型车辆开式变转速泵控转向系统的流量非线性补偿与高性能跟踪控制研究。</p>
-                            <div class="pub-meta">
-                                <span class="meta-tag">Journal of Automobile Engineering</span>
-                                <span class="meta-tag">Online First, 2024</span>
-                                <span class="meta-tag">中科协 T2</span>
-                                <span class="meta-tag">Second Author</span>
-                            </div>
+                            <dl class="pub-details" aria-label="论文信息">
+                                <div class="pub-detail pub-detail-journal"><dt>期刊：</dt><dd>Proc. Inst. Mech. Eng. Part D - J. Automob. Eng</dd></div>
+                                <div class="pub-detail"><dt>排序：</dt><dd>第二作者</dd></div>
+                                <div class="pub-detail"><dt>分区：</dt><dd>中科协 T2</dd></div>
+                                <div class="pub-detail"><dt>被引次数：</dt><dd>待补充</dd></div>
+                                <div class="pub-detail"><dt>接收时间：</dt><dd>待补充</dd></div>
+                                <div class="pub-detail"><dt>发表时间：</dt><dd>2024年（在线发表，具体日期待补充）</dd></div>
+                            </dl>
                         </div>
                         <a class="button pub-cta" href="https://journals.sagepub.com/doi/10.1177/09544070241245176" target="_blank" rel="noopener noreferrer" aria-label="查看Journal of Automobile Engineering论文（新窗口打开）">论文链接</a>
                     </article>
