@@ -1382,6 +1382,89 @@
             font-weight: 400;
         }
 
+        #research .research-art-title {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            max-width: 100%;
+            padding: 2px 0 4px;
+        }
+
+        .research-title-icon {
+            display: block;
+            flex: 0 0 68px;
+            width: 68px;
+            height: 68px;
+        }
+
+        .research-title-lettering {
+            position: relative;
+            display: block;
+            min-width: 0;
+            padding-bottom: 21px;
+        }
+
+        .research-title-text {
+            display: block;
+            padding-right: 0.08em;
+            color: #21648d;
+            font-family: "Microsoft YaHei", "Noto Sans SC", "PingFang SC", sans-serif;
+            font-size: clamp(27px, 3.6vw, 42px);
+            font-weight: 900;
+            line-height: 1.25;
+            letter-spacing: 0.06em;
+            white-space: nowrap;
+            transform: skewX(-5deg);
+        }
+
+        @supports ((background-clip: text) or (-webkit-background-clip: text)) {
+            .research-title-text {
+                background: linear-gradient(105deg, #ce3047 0%, #d56a25 24%, #b58112 38%, #137b9d 53%, #1764a5 72%, #32804f 100%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+                color: transparent;
+            }
+        }
+
+        .research-title-flow {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            display: block;
+            width: 100%;
+            height: 22px;
+            margin: 0;
+            overflow: visible;
+        }
+
+        @media (max-width: 640px) {
+            #research .research-art-title {
+                gap: 10px;
+            }
+
+            .research-title-icon {
+                flex-basis: 52px;
+                width: 52px;
+                height: 52px;
+            }
+
+            .research-title-flow {
+                height: 18px;
+            }
+
+            .research-title-lettering {
+                padding-bottom: 18px;
+            }
+        }
+
+        @media (forced-colors: active) {
+            .research-title-text {
+                background: none;
+                -webkit-text-fill-color: CanvasText;
+                color: CanvasText;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1470,7 +1553,58 @@
             <div class="container">
                 <div class="section-head">
                     <div>
-                        <h2 class="section-title">主要研究内容</h2>
+                        <h2 class="section-title research-art-title" aria-label="主要研究内容">
+                            <svg class="research-title-icon" viewBox="0 0 80 80" aria-hidden="true" focusable="false">
+                                <defs>
+                                    <linearGradient id="research-icon-wash" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0" stop-color="#fff0e8"/>
+                                        <stop offset="1" stop-color="#e6f3f8"/>
+                                    </linearGradient>
+                                    <linearGradient id="research-pump-fluid" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0" stop-color="#1376b4"/>
+                                        <stop offset="1" stop-color="#249877"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="40" cy="40" r="38" fill="url(#research-icon-wash)"/>
+                                <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 29V15H38V25" stroke="#df573b" stroke-width="3"/>
+                                    <path d="M18 51V64H56V54" stroke="#1788a4" stroke-width="3"/>
+                                    <circle cx="18" cy="40" r="11" fill="#fff" stroke="#24658c" stroke-width="2.4"/>
+                                    <rect x="32" y="25" width="30" height="29" rx="4" fill="#fff" stroke="#24658c" stroke-width="2.4"/>
+                                    <path d="M48 29V50M49 39.5H72" stroke="#24658c" stroke-width="2.8"/>
+                                    <path d="M35 30V36" stroke="#ed9a61" stroke-width="2"/>
+                                    <path d="M57 44V49" stroke="#5bbba6" stroke-width="2"/>
+                                </g>
+                                <path d="M15 34L23 40L15 46Z" fill="url(#research-pump-fluid)"/>
+                                <circle cx="38" cy="15" r="2.4" fill="#dc493b"/>
+                                <circle cx="56" cy="64" r="2.4" fill="#208b98"/>
+                            </svg>
+                            <span class="research-title-lettering">
+                                <span class="research-title-text">主要研究内容</span>
+                                <svg class="research-title-flow" viewBox="0 0 420 28" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                                    <defs>
+                                        <linearGradient id="research-warm-flow" x1="0" y1="0" x2="1" y2="0">
+                                            <stop offset="0" stop-color="#e8474c"/>
+                                            <stop offset="1" stop-color="#e99a3b"/>
+                                        </linearGradient>
+                                        <linearGradient id="research-cool-flow" x1="0" y1="0" x2="1" y2="0">
+                                            <stop offset="0" stop-color="#1e67a6"/>
+                                            <stop offset="0.6" stop-color="#1596ad"/>
+                                            <stop offset="1" stop-color="#55a763"/>
+                                        </linearGradient>
+                                    </defs>
+                                    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M3 6H104C120 6 122 18 140 18H212" stroke="url(#research-warm-flow)" stroke-width="3"/>
+                                        <path d="M78 21H176C194 21 198 7 216 7H414" stroke="url(#research-cool-flow)" stroke-width="3"/>
+                                        <path d="M224 21H336C349 21 352 13 366 13H404" stroke="#82bca4" stroke-width="1.6"/>
+                                    </g>
+                                    <circle cx="78" cy="21" r="3" fill="#fff" stroke="#276eaa" stroke-width="1.8"/>
+                                    <circle cx="224" cy="21" r="2.6" fill="#fff" stroke="#55a88d" stroke-width="1.6"/>
+                                    <path d="M209 14L216 18L209 22Z" fill="#de8a36"/>
+                                    <path d="M411 3L418 7L411 11Z" fill="#51a369"/>
+                                </svg>
+                            </span>
+                        </h2>
                     </div>
                 </div>
 
