@@ -815,6 +815,26 @@
             font-size: 14px;
         }
 
+        .projects-card {
+            scroll-margin-top: 78px;
+        }
+
+        .projects-card-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .projects-card-head h3 {
+            margin: 0;
+        }
+
+        .projects-card-head .button {
+            flex-shrink: 0;
+        }
+
         .education-card {
             grid-column: 1 / -1;
             min-width: 0;
@@ -889,36 +909,6 @@
                 width: 56px;
                 height: 56px;
             }
-        }
-
-        .project-more {
-            margin-top: 6px;
-            padding-top: 10px;
-            border-top: 1px dashed var(--line);
-        }
-
-        .project-more summary {
-            cursor: pointer;
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 14px;
-            list-style: none;
-        }
-
-        .project-more summary::-webkit-details-marker {
-            display: none;
-        }
-
-        .project-more summary::before {
-            content: "▸ ";
-        }
-
-        .project-more[open] summary::before {
-            content: "▾ ";
-        }
-
-        .project-more .item-list {
-            margin-top: 8px;
         }
 
         .contact-grid {
@@ -1785,8 +1775,11 @@
                         </div>
                     </article>
 
-                    <article class="split-card">
-                        <h3>科研项目</h3>
+                    <article class="split-card projects-card" id="research-projects">
+                        <div class="projects-card-head">
+                            <h3>科研项目</h3>
+                            <a class="button button-compact" href="html/projects.html">更多项目</a>
+                        </div>
                         <div class="item-list">
                             <div class="item">
                                 <div class="item-title">2025.12 · 中国科协青年科技人才培育工程博士生专项计划（主持）</div>
@@ -1809,15 +1802,6 @@
                                 <div class="item-text">融合液压软开关的新一源多驱型多轴转向系统节能机理与控制，55万元（全国十佳优秀结题）</div>
                             </div>
                         </div>
-                        <details class="project-more">
-                            <summary>更多项目（参与 1 项）</summary>
-                            <div class="item-list">
-                                <div class="item">
-                                    <div class="item-title">2025.12 · 福建省杰青项目（参研）</div>
-                                    <div class="item-text">实现多轴转向一源多驱系统优良能效与动态特性的新原理和新方法，30万元（结题）</div>
-                                </div>
-                            </div>
-                        </details>
                     </article>
 
                     <article class="split-card">
