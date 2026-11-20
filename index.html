@@ -815,6 +815,47 @@
             font-size: 14px;
         }
 
+        .education-item {
+            display: grid;
+            grid-template-columns: 64px minmax(0, 1fr);
+            align-items: center;
+            gap: 16px;
+        }
+
+        .education-logo {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: contain;
+            background: #ffffff;
+        }
+
+        .education-copy {
+            min-width: 0;
+            overflow-wrap: anywhere;
+        }
+
+        .education-copy .item-title span {
+            display: inline-block;
+        }
+
+        .education-logo-ecut {
+            padding: 8px;
+            border: 1px solid var(--line);
+        }
+
+        @media (max-width: 640px) {
+            .education-item {
+                grid-template-columns: 56px minmax(0, 1fr);
+                gap: 12px;
+            }
+
+            .education-logo {
+                width: 56px;
+                height: 56px;
+            }
+        }
+
         .project-more {
             margin-top: 6px;
             padding-top: 10px;
@@ -1692,11 +1733,20 @@
                     <article class="split-card">
                         <h3>教育经历</h3>
                         <div class="item-list">
-                            <div class="item">
-                                <div class="item-title">福州大学 · 机械电子工程博士研究生</div>
-                                <div class="item-text">2024级（硕博连读），导师：杜恒教授</div>
+                            <div class="item education-item">
+                                <img class="education-logo" src="personal_data/fuzhou-university-logo.webp" alt="福州大学校徽" width="64" height="64" loading="lazy" decoding="async">
+                                <div class="education-copy">
+                                    <div class="item-title"><span>福州大学</span> · <span>机械电子工程</span> · <span>博士研究生</span></div>
+                                    <div class="item-text">2022-至今（硕博连读），导师：杜恒教授（教育部青年长江学者）</div>
+                                </div>
                             </div>
-                            <!-- TODO: 本科、硕士教育经历及准确起止时间 -->
+                            <div class="item education-item">
+                                <img class="education-logo education-logo-ecut" src="personal_data/ecut-university-logo.webp" alt="东华理工大学校徽" width="64" height="64" loading="lazy" decoding="async">
+                                <div class="education-copy">
+                                    <div class="item-title"><span>东华理工大学</span> · <span>机械工程</span> · <span>本科</span></div>
+                                    <div class="item-text">2018-2022，工学学士学位</div>
+                                </div>
+                            </div>
                         </div>
                     </article>
 
