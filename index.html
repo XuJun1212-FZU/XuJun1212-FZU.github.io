@@ -815,6 +815,27 @@
             font-size: 14px;
         }
 
+        .education-card {
+            grid-column: 1 / -1;
+            min-width: 0;
+        }
+
+        .education-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .education-grid > .education-item {
+            min-width: 0;
+            padding-top: 0;
+            border-top: 0;
+        }
+
+        .education-grid > .education-item + .education-item {
+            padding-left: 24px;
+            border-left: 1px solid var(--line);
+        }
+
         .education-item {
             display: grid;
             grid-template-columns: 64px minmax(0, 1fr);
@@ -845,9 +866,23 @@
         }
 
         @media (max-width: 640px) {
-            .education-item {
-                grid-template-columns: 56px minmax(0, 1fr);
+            .education-grid {
+                gap: 16px;
+            }
+
+            .education-grid > .education-item {
+                grid-template-columns: minmax(0, 1fr);
+                align-content: start;
+                justify-items: start;
                 gap: 12px;
+            }
+
+            .education-grid > .education-item + .education-item {
+                padding-left: 16px;
+            }
+
+            .education-copy .item-title {
+                min-height: 5.25em;
             }
 
             .education-logo {
@@ -1730,9 +1765,9 @@
                 </div>
 
                 <div class="split-grid">
-                    <article class="split-card">
+                    <article class="split-card education-card">
                         <h3>教育经历</h3>
-                        <div class="item-list">
+                        <div class="item-list education-grid">
                             <div class="item education-item">
                                 <img class="education-logo" src="personal_data/fuzhou-university-logo.webp" alt="福州大学校徽" width="64" height="64" loading="lazy" decoding="async">
                                 <div class="education-copy">
