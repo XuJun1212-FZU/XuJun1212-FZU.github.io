@@ -591,6 +591,111 @@
             }
         }
 
+        .pub-evaluation {
+            grid-column: 1 / -1;
+            min-width: 0;
+            padding-top: 20px;
+            border-top: 1px solid #dce0e5;
+        }
+
+        .pub-evaluation h4 {
+            margin: 0 0 18px;
+            color: #8b2432;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .pub-evaluation-body {
+            display: grid;
+            grid-template-columns: 240px minmax(0, 1fr);
+            gap: 28px;
+            align-items: start;
+        }
+
+        .evaluation-scholars {
+            display: grid;
+            gap: 20px;
+        }
+
+        .evaluation-scholar {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+        }
+
+        .evaluation-scholar img {
+            flex: 0 0 72px;
+            width: 72px;
+            height: 72px;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 25%;
+        }
+
+        .evaluation-scholar-name {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 16px;
+        }
+
+        .evaluation-scholar p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .evaluation-quote {
+            min-width: 0;
+            margin: 0;
+        }
+
+        .evaluation-quote p {
+            margin: 0 0 14px;
+            font-size: 14px;
+            line-height: 1.85;
+            overflow-wrap: anywhere;
+        }
+
+        .evaluation-quote .evaluation-english {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 16px;
+            line-height: 1.75;
+        }
+
+        .evaluation-quote .evaluation-chinese {
+            color: var(--muted);
+        }
+
+        .evaluation-reference {
+            color: #8b2432;
+            font-weight: 700;
+        }
+
+        .evaluation-source {
+            display: block;
+            color: var(--muted);
+            font-size: 12px;
+            font-style: normal;
+            line-height: 1.8;
+            overflow-wrap: anywhere;
+        }
+
+        .evaluation-source a {
+            color: var(--accent);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        @media (max-width: 768px) {
+            .pub-evaluation-body {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 24px;
+            }
+        }
+
         .pub-meta {
             margin-top: 8px;
             display: flex;
@@ -1288,7 +1393,7 @@
                 </div>
 
                 <div class="pub-list">
-                    <article class="pub-item">
+<article class="pub-item">
                         <div class="pub-year">2026.11</div>
                         <div class="pub-cover pub-cover-a">
                             <img class="pub-poster" src="personal_data/publication-energy-efficiency-coupling-cover.png" alt="重载车辆分布式同源双驱电液转向系统能效耦合机理论文主题海报" width="1055" height="1491" loading="lazy" decoding="async" fetchpriority="low">
@@ -1309,7 +1414,7 @@
                         <span class="pub-cta meta-tag">论文链接暂未提供</span>
                     </article>
 
-                    <article class="pub-item">
+<article class="pub-item">
                         <div class="pub-year">2026.01</div>
                         <div class="pub-cover pub-cover-a">
                             <img class="pub-poster" src="personal_data/publication-measurement-2026-cover.png" alt="Measurement 2026智能轮胎纵向力测量论文主题海报" width="1055" height="1491" loading="lazy" decoding="async" fetchpriority="low">
@@ -1330,7 +1435,7 @@
                         <a class="button pub-cta" href="https://www.sciencedirect.com/science/article/abs/pii/S0263224126001247" target="_blank" rel="noopener noreferrer" aria-label="查看Measurement论文（新窗口打开）">论文链接</a>
                     </article>
 
-                    <article class="pub-item">
+<article class="pub-item">
                         <div class="pub-year">2025.03</div>
                         <div class="pub-cover pub-cover-a">
                             <img class="pub-poster" src="personal_data/publication-energy-2025-cover.png" alt="Energy 2025论文主题海报" width="1055" height="1491" loading="lazy" decoding="async" fetchpriority="low">
@@ -1351,7 +1456,7 @@
                         <a class="button pub-cta" href="https://www.sciencedirect.com/science/article/pii/S0360544225012046" target="_blank" rel="noopener noreferrer" aria-label="查看Energy论文（新窗口打开）">论文链接</a>
                     </article>
 
-                    <article class="pub-item">
+<article class="pub-item">
                         <div class="pub-year">2024.03</div>
                         <div class="pub-cover pub-cover-b">
                             <img class="pub-poster" src="personal_data/publication-steering-control-2025-cover.png" alt="重型车辆泵控转向系统论文主题海报" width="1055" height="1491" loading="lazy" decoding="async" fetchpriority="low">
@@ -1370,6 +1475,32 @@
                             </dl>
                         </div>
                         <a class="button pub-cta" href="https://journals.sagepub.com/doi/10.1177/09544070241245176" target="_blank" rel="noopener noreferrer" aria-label="查看Journal of Automobile Engineering论文（新窗口打开）">论文链接</a>
+                        <aside class="pub-evaluation" aria-labelledby="steering-evaluation-title">
+                            <h4 id="steering-evaluation-title">重要学术评价</h4>
+                            <div class="pub-evaluation-body">
+                                <div class="evaluation-scholars" aria-label="引用论文作者">
+                                    <div class="evaluation-scholar">
+                                        <img src="personal_data/evaluation-yang-huayong.png" alt="杨华勇" width="72" height="72" loading="lazy" decoding="async">
+                                        <div>
+                                            <strong class="evaluation-scholar-name">杨华勇</strong>
+                                            <p>中国工程院院士<br>浙江大学</p>
+                                        </div>
+                                    </div>
+                                    <div class="evaluation-scholar">
+                                        <img src="personal_data/evaluation-han-dong.jpg" alt="韩东" width="72" height="72" loading="lazy" decoding="async">
+                                        <div>
+                                            <strong class="evaluation-scholar-name">韩东</strong>
+                                            <p>教育部青年长江学者<br>浙江大学</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <blockquote class="evaluation-quote" cite="https://www.mdpi.com/2075-1702/12/12/913">
+                                    <p class="evaluation-english" lang="en">As a result, it is challenging to meet the varying motion performance requirements for attitude fine tuning and segment positioning. On the other hand, servomotor pump drive actuators are more suited for segment assembly due to their quick reactions and high motion control precision[34][35]<span class="evaluation-reference">[36]</span></p>
+                                    <p class="evaluation-chinese" lang="zh-CN">因此，难以满足姿态微调与管片定位过程中不同的运动性能需求。另一方面，伺服电机泵驱动执行器由于响应迅速、运动控制精度高，更适用于管片拼装[34][35]<span class="evaluation-reference">[36]</span>。</p>
+                                    <cite class="evaluation-source">引文来源：<a href="https://www.mdpi.com/2075-1702/12/12/913" target="_blank" rel="noopener noreferrer">Novel Dual Parallel-Connected-Pump Hydraulic System and Error Allocation Strategy for Segment Assembly</a>，Machines，2024，12(12)，913。<br>该段落同时引用文献[34]、[35]、[36]，其中<span class="evaluation-reference">[36]</span>为本文。</cite>
+                                </blockquote>
+                            </div>
+                        </aside>
                     </article>
 
                     <article class="pub-item">
